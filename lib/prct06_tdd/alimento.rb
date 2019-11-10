@@ -16,4 +16,8 @@ class Alimento
     "El alimento es: #{@nombre}"
   end
 
+  def emisiones
+    "Las emisiones son de: #{@gasEfectoInv} kgCO^2eq"
+  end
+
 end
