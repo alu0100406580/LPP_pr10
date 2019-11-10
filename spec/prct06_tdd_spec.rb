@@ -48,4 +48,10 @@ RSpec.describe Prct06Tdd do
     expect( @alimento2.valorEnergetico ).to eq(132.8)
     expect( @alimento3.valorEnergetico ).to eq(402.2)
   end
+
+  it "Impacto Ambiental diario de un hombre 20-39" do
+    expect( @alimento1.impactoAmbiental ).to eq("#{}% CDR Kcal, y proteinas #{}g/54g")
+    expect( @alimento2.impactoAmbiental ).to eq("#{}% CDR Kcal, y proteinas #{}g/54g")
+    expect( @alimento3.impactoAmbiental ).to eq("#{}% CDR Kcal, y proteinas #{}g/54g")
+  end
 end
