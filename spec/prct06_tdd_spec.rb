@@ -4,9 +4,9 @@ RSpec.describe Prct06Tdd do
   end
 
   before :each do
-    @chocolate = Alimento.new( 5.3, 47.0, 30.0, 2.3, 3.4)
-    @pollo = Alimento.new( 20.6, 0.0, 5.6, 5.7, 7.1)
-    @queso = Alimento.new( 25.0, 1.3, 33.0, 11.0, 41.0)
+    @alimento1 = Alimento.new("chocolate", 5.3, 47.0, 30.0, 2.3, 3.4)
+    @alimento2 = Alimento.new("pollo", 20.6, 0.0, 5.6, 5.7, 7.1)
+    @alimento3 = Alimento.new("queso",  25.0, 1.3, 33.0, 11.0, 41.0)
   end
 
   it "Creamos la clase Alimento" do
@@ -14,9 +14,9 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Creamos los alimentos de manera correcta" do
-    expect(@chocolate).not_to eq(nil)
-    expect(@pollo).not_to eq(nil)
-    expect(@queso).not_to eq(nil)
+    expect(@alimento1).not_to eq(nil)
+    expect(@alimento2).not_to eq(nil)
+    expect(@alimento3).not_to eq(nil)
+    puts @alimento1.nombre
   end
-
 end
