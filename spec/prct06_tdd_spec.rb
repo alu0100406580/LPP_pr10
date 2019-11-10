@@ -38,8 +38,8 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Alimento to_s" do
-    expect( @alimento1.to_s ).to eq("chocolate: proteínas #{5.3},carbohidratos #{47.0},lípidos #{30.0},emisiones #{2.3},terreno #{3.4}")
-    expect( @alimento2.to_s ).to eq("pollo: proteínas #{20.6},carbohidratos #{0.0},lípidos #{5.6},emisiones #{5.7},terreno #{7.1}")
-    expect( @alimento3.to_s ).to eq("queso: proteínas #{25.0},carbohidratos #{1.3},lípidos #{33.0},emisiones #{11.0},terreno #{41.0}")
+    expect( @alimento1.to_s ).to eq("chocolate: proteínas #{5.3}, carbohidratos #{47.0}, lípidos #{30.0}, emisiones #{2.3}, terreno #{3.4}")
+    expect( @alimento2.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
+    expect( @alimento3.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
   end
 end

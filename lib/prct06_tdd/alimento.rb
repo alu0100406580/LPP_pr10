@@ -24,4 +24,8 @@ class Alimento
     "El terreno utilizado es de: #{@terrenoAño} m^2/año"
   end
 
+  def to_s
+    "#{@nombre}: proteínas #{@proteinas}, carbohidratos #{@carbohidratos}, lípidos #{@lipidos}, emisiones #{@gasEfectoInv}, terreno #{@terrenoAño}"
+  end
+
 end
