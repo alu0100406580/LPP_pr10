@@ -17,6 +17,11 @@ RSpec.describe Prct06Tdd do
     expect(@alimento1).not_to eq(nil)
     expect(@alimento2).not_to eq(nil)
     expect(@alimento3).not_to eq(nil)
-    puts @alimento1.nombre
+   end
+  
+  it "Nombre del alimento" do
+    expect( @alimento1.identificador ).to eq("chocolate")
+    expect( @alimento2.identificador ).to eq("pollo")
+    expect( @alimento3.identificador ).to eq("queso")
   end
 end

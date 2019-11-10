@@ -11,4 +11,5 @@ class Alimento
       @gasEfectoInv = gasEfectoInv
       @terrenoAño = terrenoAño
   end
+
 end
