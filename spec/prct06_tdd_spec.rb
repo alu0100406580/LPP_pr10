@@ -24,4 +24,10 @@ RSpec.describe Prct06Tdd do
     expect( @alimento2.identificador ).to eq("El alimento es: pollo")
     expect( @alimento3.identificador ).to eq("El alimento es: queso")
   end
+
+  it "emisiones de gases de efecto invernadero" do
+    expect( @alimento1.emisiones ).to eq("Las emision son de: 2.3 kgCO^2eq")
+    expect( @alimento2.emisiones ).to eq("Las emision son de: 5.7 kgCO^2eq")
+    expect( @alimento3.emisiones ).to eq("Las emision son de: 11.0 kgCO^2eq")
+  end
 end
