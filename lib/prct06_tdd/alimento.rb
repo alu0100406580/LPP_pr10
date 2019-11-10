@@ -20,4 +20,8 @@ class Alimento
     "Las emisiones son de: #{@gasEfectoInv} kgCO^2eq"
   end
 
+  def terreno
+    "El terreno utilizado es de: #{@terrenoAño} m^2/año"
+  end
+
 end
