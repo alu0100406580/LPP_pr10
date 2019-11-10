@@ -36,4 +36,8 @@ class Alimento
     "#{(valorEnergetico/30.0).round}% CDR Kcal, y proteinas #{@proteinas}g/54g"
   end
 
+  def impactoAmbientalMujer
+    "#{(valorEnergetico/23.0).round}% CDR Kcal, y proteinas #{@proteinas}g/41g"
+  end
+
 end
