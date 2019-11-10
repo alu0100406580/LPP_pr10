@@ -42,4 +42,10 @@ RSpec.describe Prct06Tdd do
     expect( @alimento2.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
     expect( @alimento3.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
   end
+
+  it "Valor Energético de un alimento" do
+    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
+    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
+    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
+  end
 end
