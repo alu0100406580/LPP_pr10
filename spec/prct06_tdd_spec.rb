@@ -30,4 +30,10 @@ RSpec.describe Prct06Tdd do
     expect( @alimento2.emisiones ).to eq("Las emisiones son de: #{5.7} kgCO^2eq")
     expect( @alimento3.emisiones ).to eq("Las emisiones son de: #{11.0} kgCO^2eq")
   end
+
+  it "Terreno utilizado" do
+    expect( @alimento1.terreno ).to eq("El terreno utilizado es de: #{3.4} m^2/año")
+    expect( @alimento2.terreno ).to eq("El terreno utilizado es de: #{7.1} m^2/año")
+    expect( @alimento3.terreno ).to eq("El terreno utilizado es de: #{41.0} m^2/año")
+  end
 end
