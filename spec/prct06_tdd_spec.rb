@@ -3,7 +3,7 @@ RSpec.describe Prct06Tdd do
     expect(Prct06Tdd::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "Creamos la clase Alimento" do
+    expect( Alimento.new() ).not_to eq( nil )
   end
 end
