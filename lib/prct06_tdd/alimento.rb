@@ -12,4 +12,8 @@ class Alimento
       @terrenoAño = terrenoAño
   end
 
+  def identificador
+    "El alimento es: #{@nombre}"
+  end
+
 end

@@ -20,8 +20,8 @@ RSpec.describe Prct06Tdd do
    end
   
   it "Nombre del alimento" do
-    expect( @alimento1.identificador ).to eq("chocolate")
-    expect( @alimento2.identificador ).to eq("pollo")
-    expect( @alimento3.identificador ).to eq("queso")
+    expect( @alimento1.identificador ).to eq("El alimento es: chocolate")
+    expect( @alimento2.identificador ).to eq("El alimento es: pollo")
+    expect( @alimento3.identificador ).to eq("El alimento es: queso")
   end
 end
