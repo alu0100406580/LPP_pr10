@@ -44,8 +44,8 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Valor Energético de un alimento" do
-    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
-    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
-    expecto( @alimento1.valorEnergetico ).to eq(2251.1)
+    expect( @alimento1.valorEnergetico ).to eq(479.2)
+    expect( @alimento2.valorEnergetico ).to eq(132.8)
+    expect( @alimento3.valorEnergetico ).to eq(402.2)
   end
 end

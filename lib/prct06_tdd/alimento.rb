@@ -28,4 +28,8 @@ class Alimento
     "#{@nombre}: proteínas #{@proteinas}, carbohidratos #{@carbohidratos}, lípidos #{@lipidos}, emisiones #{@gasEfectoInv}, terreno #{@terrenoAño}"
   end
 
+  def valorEnergetico
+    (@carbohidratos * 4 + @lipidos * 9 + @proteinas * 4)
+  end
+
 end
