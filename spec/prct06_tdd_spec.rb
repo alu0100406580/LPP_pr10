@@ -7,9 +7,33 @@ RSpec.describe Prct06Tdd do
     @alimento1 = Alimento.new( "chocolate", 5.3, 47.0, 30.0, 2.3, 3.4 )
     @alimento2 = Alimento.new( "pollo", 20.6, 0.0, 5.6, 5.7, 7.1 )
     @alimento3 = Alimento.new( "queso",  25.0, 1.3, 33.0, 11.0, 41.0 )
-    @alimento4 = Alimento.new( "Tofu", 8.0, 1.9, 4.8, 2.0, 2.2 )
-    @alimento5 = Alimento.new( "carne de vaca", 20.6, 0.0, 5.6, 5.7, 7.1 )
+    @alimento4 = Alimento.new( "tofu", 8.0, 1.9, 4.8, 2.0, 2.2 )
+    @alimento5 = Alimento.new( "carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0 )
     @alimento6 = Alimento.new( "cerveza",  0.5, 3.6, 0.0, 0.24, 0.22 )
+    @alimento7 = Alimento.new( "carne de cordero",  18.0, 0.0, 17.0, 20.0, 185.0 )
+    @alimento8 = Alimento.new( "salmón", 19.9, 0.0, 13.6, 6.0, 3.7 )
+    @alimento9 = Alimento.new( "lentejas", 23.5, 52.0, 1.4, 0.4, 3.4 )
+    @alimento10 = Alimento.new( "nuez",  20.0, 21.0, 54.0, 0.3, 7.9 )
+    @alimento11 = Alimento.new( "leche de vaca", 3.3, 4.8, 3.2, 3.2, 8.9 )
+    @alimento12 = Alimento.new( "huevos",  13.0, 1.1, 11.0, 4.2, 5.7 )
+    
+    @alimentos = [ @alimento1, @alimento1, @alimento1, @alimento1, @alimento10, @alimento12 ]
+
+    def impactoAmbientalHombre( alimentos )
+      
+      cdr = 0
+      proteinas = 0
+      alimentos.each do | item |
+        cdr += item.valorEnergetico()
+        proteinas += item.proteinas()
+      end
+      #
+      "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g"
+    end
+  
+    # def impactoAmbientalMujer
+    #   "#{(valorEnergetico/23.0).round}% CDR Kcal, y proteinas #{@proteinas}g/41g"
+    # end
   end
 
   it "Creamos la clase Alimento" do
@@ -56,7 +80,7 @@ RSpec.describe Prct06Tdd do
     #expect( @alimento1.impactoAmbientalHombre ).to eq("#{16}% CDR Kcal, y proteinas #{5.3}g/54g")
     #expect( @alimento2.impactoAmbientalHombre ).to eq("#{4}% CDR Kcal, y proteinas #{20.6}g/54g")
     #expect( @alimento3.impactoAmbientalHombre ).to eq("#{13}% CDR Kcal, y proteinas #{25.0}g/54g")
-    expect( impactoAmbientalHombre( alimentos ) ).to eq("Con este menú #{}% CDR Kcal, y proteínas #{}g/54g")
+    expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g")
   end
 
   # it "Impacto Ambiental diario de una mujer 20-39" do

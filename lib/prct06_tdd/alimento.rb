@@ -29,15 +29,7 @@ class Alimento
   end
 
   def valorEnergetico
-    (@carbohidratos * 4 + @lipidos * 9 + @proteinas * 4)
-  end
-
-  def impactoAmbientalHombre
-    "#{(valorEnergetico/30.0).round}% CDR Kcal, y proteinas #{@proteinas}g/54g"
-  end
-
-  def impactoAmbientalMujer
-    "#{(valorEnergetico/23.0).round}% CDR Kcal, y proteinas #{@proteinas}g/41g"
+    (@carbohidratos * 4 + @lipidos * 9 + @proteinas * 4 )
   end
 
 end
