@@ -27,13 +27,9 @@ RSpec.describe Prct06Tdd do
         cdr += item.valorEnergetico()
         proteinas += item.proteinas()
       end
-      #
       "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g"
     end
   
-    # def impactoAmbientalMujer
-    #   "#{(valorEnergetico/23.0).round}% CDR Kcal, y proteinas #{@proteinas}g/41g"
-    # end
   end
 
   it "Creamos la clase Alimento" do
@@ -77,16 +73,14 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Impacto Ambiental diario de un hombre 20-39" do
-    #expect( @alimento1.impactoAmbientalHombre ).to eq("#{16}% CDR Kcal, y proteinas #{5.3}g/54g")
-    #expect( @alimento2.impactoAmbientalHombre ).to eq("#{4}% CDR Kcal, y proteinas #{20.6}g/54g")
-    #expect( @alimento3.impactoAmbientalHombre ).to eq("#{13}% CDR Kcal, y proteinas #{25.0}g/54g")
     expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g")
   end
 
-  # it "Impacto Ambiental diario de una mujer 20-39" do
-  #   #expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
-  #   #expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
-  #   #expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
-  # end
+  it "Impacto Ambiental diario de una mujer 20-39" do
+    #expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
+    #expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
+    #expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
+    expect( impactoAmbientalHombre( @alimentos2 ) ).to eq("Con este menú obtiene el #{}% CDR Kcal, y proteinas #{}g/41g")
+  end
   
 end
