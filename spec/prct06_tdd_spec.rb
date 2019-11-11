@@ -18,6 +18,7 @@ RSpec.describe Prct06Tdd do
     @alimento12 = Alimento.new( "huevos",  13.0, 1.1, 11.0, 4.2, 5.7 )
     
     @alimentos = [ @alimento1, @alimento1, @alimento1, @alimento1, @alimento10, @alimento12 ]
+    @alimentos2 = [ @alimento1, @alimento1, @alimento1, @alimento10, @alimento6, @alimento11 ]
 
     def impactoAmbientalHombre( alimentos )
       
@@ -28,6 +29,17 @@ RSpec.describe Prct06Tdd do
         proteinas += item.proteinas()
       end
       "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g"
+    end
+
+    def impactoAmbientalMujer( alimentos )
+      
+      cdr = 0
+      proteinas = 0.0
+      alimentos.each do | item |
+        cdr += item.valorEnergetico()
+        proteinas += item.proteinas()
+      end
+      "Con este menú obtiene el #{(cdr/23.0).round}% CDR Kcal, y proteinas #{proteinas.round}g/41g"
     end
   
   end
@@ -80,7 +92,7 @@ RSpec.describe Prct06Tdd do
     #expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
     #expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
     #expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
-    expect( impactoAmbientalHombre( @alimentos2 ) ).to eq("Con este menú obtiene el #{}% CDR Kcal, y proteinas #{}g/41g")
+    expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g")
   end
   
 end
