@@ -4,9 +4,12 @@ RSpec.describe Prct06Tdd do
   end
 
   before :each do
-    @alimento1 = Alimento.new("chocolate", 5.3, 47.0, 30.0, 2.3, 3.4)
-    @alimento2 = Alimento.new("pollo", 20.6, 0.0, 5.6, 5.7, 7.1)
-    @alimento3 = Alimento.new("queso",  25.0, 1.3, 33.0, 11.0, 41.0)
+    @alimento1 = Alimento.new( "chocolate", 5.3, 47.0, 30.0, 2.3, 3.4 )
+    @alimento2 = Alimento.new( "pollo", 20.6, 0.0, 5.6, 5.7, 7.1 )
+    @alimento3 = Alimento.new( "queso",  25.0, 1.3, 33.0, 11.0, 41.0 )
+    @alimento4 = Alimento.new( "Tofu", 8.0, 1.9, 4.8, 2.0, 2.2 )
+    @alimento5 = Alimento.new( "carne de vaca", 20.6, 0.0, 5.6, 5.7, 7.1 )
+    @alimento6 = Alimento.new( "cerveza",  0.5, 3.6, 0.0, 0.24, 0.22 )
   end
 
   it "Creamos la clase Alimento" do
@@ -50,14 +53,16 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Impacto Ambiental diario de un hombre 20-39" do
-    expect( @alimento1.impactoAmbientalHombre ).to eq("#{16}% CDR Kcal, y proteinas #{5.3}g/54g")
-    expect( @alimento2.impactoAmbientalHombre ).to eq("#{4}% CDR Kcal, y proteinas #{20.6}g/54g")
-    expect( @alimento3.impactoAmbientalHombre ).to eq("#{13}% CDR Kcal, y proteinas #{25.0}g/54g")
+    #expect( @alimento1.impactoAmbientalHombre ).to eq("#{16}% CDR Kcal, y proteinas #{5.3}g/54g")
+    #expect( @alimento2.impactoAmbientalHombre ).to eq("#{4}% CDR Kcal, y proteinas #{20.6}g/54g")
+    #expect( @alimento3.impactoAmbientalHombre ).to eq("#{13}% CDR Kcal, y proteinas #{25.0}g/54g")
+    expect( impactoAmbientalHombre( alimentos ) ).to eq("Con este menú #{}% CDR Kcal, y proteínas #{}g/54g")
   end
 
-  it "Impacto Ambiental diario de una mujer 20-39" do
-    expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
-    expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
-    expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
-  end
+  # it "Impacto Ambiental diario de una mujer 20-39" do
+  #   #expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
+  #   #expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
+  #   #expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
+  # end
+  
 end
