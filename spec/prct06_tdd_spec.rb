@@ -24,22 +24,26 @@ RSpec.describe Prct06Tdd do
       
       cdr = 0
       proteinas = 0
+      gases = 0.0
       alimentos.each do | item |
         cdr += item.valorEnergetico()
         proteinas += item.proteinas()
+        gases += item.gasEfectoInv
       end
-      "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g"
+      "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g con una emisión de #{gases}KgCO2eq"
     end
 
     def impactoAmbientalMujer( alimentos )
       
       cdr = 0
       proteinas = 0.0
+      gases = 0.0
       alimentos.each do | item |
         cdr += item.valorEnergetico()
         proteinas += item.proteinas()
+        gases += item.gasEfectoInv
       end
-      "Con este menú obtiene el #{(cdr/23.0).round}% CDR Kcal, y proteinas #{proteinas.round}g/41g"
+      "Con este menú obtiene el #{(cdr/23.0).round}% CDR Kcal, y proteinas #{proteinas.round}g/41g con una emisión de #{gases}KgCO2eq"
     end
   
   end
@@ -85,14 +89,11 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Impacto Ambiental diario de un hombre 20-39" do
-    expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g")
+    expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g con una emisión de #{13.7}KgCO2eq")
   end
 
   it "Impacto Ambiental diario de una mujer 20-39" do
-    #expect( @alimento1.impactoAmbientalMujer ).to eq("#{21}% CDR Kcal, y proteinas #{5.3}g/41g")
-    #expect( @alimento2.impactoAmbientalMujer ).to eq("#{6}% CDR Kcal, y proteinas #{20.6}g/41g")
-    #expect( @alimento3.impactoAmbientalMujer ).to eq("#{17}% CDR Kcal, y proteinas #{25.0}g/41g")
-    expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g")
+    expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g con una emisión de #{10.64}KgCO2eq")
   end
   
 end
