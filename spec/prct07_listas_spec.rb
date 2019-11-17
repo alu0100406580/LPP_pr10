@@ -20,6 +20,13 @@ RSpec.describe Prct07Listas do
       expect(@lista1).not_to eq(nil)
       expect(@alimento1).not_to eq(nil)
     end
+
+    it "Lista vacía" do
+      expect(@lista1.is_empty?).to eq(true)
+      expect(@lista2.is_empty?).to eq(true)
+    end
+
+
   end
 end
 
