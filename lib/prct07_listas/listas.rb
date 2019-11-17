@@ -14,4 +14,8 @@ class Lista
         @cola = nil
         @tamaño = 0
     end
+
+    def is_empty?
+        return self.tamaño.zero?
+    end
 end
