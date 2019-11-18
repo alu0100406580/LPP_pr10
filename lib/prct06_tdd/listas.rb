@@ -9,10 +9,19 @@ class Lista
     
   attr_accessor :cabeza, :cola, :tamaño
 
-  def initialize()
+  # def initialize()
+  #   @cabeza = nil
+  #   @cola = nil
+  #   @tamaño = 0
+  # end
+
+  def initialize( arr = nil )
     @cabeza = nil
     @cola = nil
     @tamaño = 0
+    unless arr.nil?
+      self.insertaArray( arr )
+    end
   end
 
   def is_empty?
@@ -45,6 +54,14 @@ class Lista
       @cola = nodo
     end
     @tamaño = @tamaño + 1
+  end
+
+  def insertaArray( arr )
+    if arr.kind_of?( Array )
+      while ( arr.length != 0)
+        self.insertaAtras( arr.shift )
+      end
+    end
   end
 
   def extraerDelante
@@ -81,6 +98,6 @@ class Lista
         end
         return arr
     end
-end
+  end
 
 end

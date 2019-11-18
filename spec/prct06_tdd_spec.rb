@@ -4,24 +4,24 @@ RSpec.describe Prct06Tdd do
   end
 
   before :each do
-    @alimento1 = Alimento.new( "chocolate", 5.3, 47.0, 30.0, 2.3, 3.4 )
-    @alimento2 = Alimento.new( "pollo", 20.6, 0.0, 5.6, 5.7, 7.1 )
-    @alimento3 = Alimento.new( "queso",  25.0, 1.3, 33.0, 11.0, 41.0 )
-    @alimento4 = Alimento.new( "tofu", 8.0, 1.9, 4.8, 2.0, 2.2 )
-    @alimento5 = Alimento.new( "carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0 )
-    @alimento6 = Alimento.new( "cerveza",  0.5, 3.6, 0.0, 0.24, 0.22 )
-    @alimento7 = Alimento.new( "carne de cordero",  18.0, 0.0, 17.0, 20.0, 185.0 )
-    @alimento8 = Alimento.new( "salmón", 19.9, 0.0, 13.6, 6.0, 3.7 )
-    @alimento9 = Alimento.new( "lentejas", 23.5, 52.0, 1.4, 0.4, 3.4 )
-    @alimento10 = Alimento.new( "nuez",  20.0, 21.0, 54.0, 0.3, 7.9 )
-    @alimento11 = Alimento.new( "leche de vaca", 3.3, 4.8, 3.2, 3.2, 8.9 )
-    @alimento12 = Alimento.new( "huevos",  13.0, 1.1, 11.0, 4.2, 5.7 )
-    @alimento13 = Alimento.new( "camarones", 17.6, 1.5, 0.6, 18.0, 2.0 )
-    @alimento14 = Alimento.new( "cerdo", 21.5, 0.0, 6.3, 7.6, 11.0 )
-    @alimento15 = Alimento.new( "café", 0.1, 0.0, 0.0, 0.4, 0.3 )
+    @chocolate = Alimento.new( "chocolate", 5.3, 47.0, 30.0, 2.3, 3.4 )
+    @pollo = Alimento.new( "pollo", 20.6, 0.0, 5.6, 5.7, 7.1 )
+    @queso = Alimento.new( "queso",  25.0, 1.3, 33.0, 11.0, 41.0 )
+    @tofu = Alimento.new( "tofu", 8.0, 1.9, 4.8, 2.0, 2.2 )
+    @carne_vaca = Alimento.new( "carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0 )
+    @cerveza = Alimento.new( "cerveza",  0.5, 3.6, 0.0, 0.24, 0.22 )
+    @carne_cordero = Alimento.new( "carne de cordero",  18.0, 0.0, 17.0, 20.0, 185.0 )
+    @salmon = Alimento.new( "salmón", 19.9, 0.0, 13.6, 6.0, 3.7 )
+    @lentejas = Alimento.new( "lentejas", 23.5, 52.0, 1.4, 0.4, 3.4 )
+    @nuez = Alimento.new( "nuez",  20.0, 21.0, 54.0, 0.3, 7.9 )
+    @leche_vaca = Alimento.new( "leche de vaca", 3.3, 4.8, 3.2, 3.2, 8.9 )
+    @huevos = Alimento.new( "huevos",  13.0, 1.1, 11.0, 4.2, 5.7 )
+    @camarones = Alimento.new( "camarones", 17.6, 1.5, 0.6, 18.0, 2.0 )
+    @cerdo = Alimento.new( "cerdo", 21.5, 0.0, 6.3, 7.6, 11.0 )
+    @cafe = Alimento.new( "café", 0.1, 0.0, 0.0, 0.4, 0.3 )
     
-    @alimentos = [ @alimento1, @alimento1, @alimento1, @alimento1, @alimento10, @alimento12 ]
-    @alimentos2 = [ @alimento1, @alimento1, @alimento1, @alimento10, @alimento6, @alimento11 ]
+    @alimentos = [ @chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos ]
+    @alimentos2 = [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ]
 
     def impactoAmbientalHombre( alimentos )
       
@@ -56,39 +56,39 @@ RSpec.describe Prct06Tdd do
   end
 
   it "Creamos los alimentos de manera correcta" do
-    expect(@alimento1).not_to eq(nil)
-    expect(@alimento2).not_to eq(nil)
-    expect(@alimento3).not_to eq(nil)
+    expect(@chocolate).not_to eq(nil)
+    expect(@pollo).not_to eq(nil)
+    expect(@queso).not_to eq(nil)
    end
   
   it "Nombre del alimento" do
-    expect( @alimento1.identificador ).to eq("El alimento es: chocolate")
-    expect( @alimento2.identificador ).to eq("El alimento es: pollo")
-    expect( @alimento3.identificador ).to eq("El alimento es: queso")
+    expect( @chocolate.identificador ).to eq("El alimento es: chocolate")
+    expect( @pollo.identificador ).to eq("El alimento es: pollo")
+    expect( @queso.identificador ).to eq("El alimento es: queso")
   end
 
   it "emisiones de gases de efecto invernadero" do
-    expect( @alimento1.emisiones ).to eq("Las emisiones son de: #{2.3} kgCO^2eq")
-    expect( @alimento2.emisiones ).to eq("Las emisiones son de: #{5.7} kgCO^2eq")
-    expect( @alimento3.emisiones ).to eq("Las emisiones son de: #{11.0} kgCO^2eq")
+    expect( @chocolate.emisiones ).to eq("Las emisiones son de: #{2.3} kgCO^2eq")
+    expect( @pollo.emisiones ).to eq("Las emisiones son de: #{5.7} kgCO^2eq")
+    expect( @queso.emisiones ).to eq("Las emisiones son de: #{11.0} kgCO^2eq")
   end
 
   it "Terreno utilizado" do
-    expect( @alimento1.terreno ).to eq("El terreno utilizado es de: #{3.4} m^2/año")
-    expect( @alimento2.terreno ).to eq("El terreno utilizado es de: #{7.1} m^2/año")
-    expect( @alimento3.terreno ).to eq("El terreno utilizado es de: #{41.0} m^2/año")
+    expect( @chocolate.terreno ).to eq("El terreno utilizado es de: #{3.4} m^2/año")
+    expect( @pollo.terreno ).to eq("El terreno utilizado es de: #{7.1} m^2/año")
+    expect( @queso.terreno ).to eq("El terreno utilizado es de: #{41.0} m^2/año")
   end
 
   it "Alimento to_s" do
-    expect( @alimento1.to_s ).to eq("chocolate: proteínas #{5.3}, carbohidratos #{47.0}, lípidos #{30.0}, emisiones #{2.3}, terreno #{3.4}")
-    expect( @alimento2.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
-    expect( @alimento3.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
+    expect( @chocolate.to_s ).to eq("chocolate: proteínas #{5.3}, carbohidratos #{47.0}, lípidos #{30.0}, emisiones #{2.3}, terreno #{3.4}")
+    expect( @pollo.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
+    expect( @queso.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
   end
 
   it "Valor Energético de un alimento" do
-    expect( @alimento1.valorEnergetico ).to eq(479.2)
-    expect( @alimento2.valorEnergetico ).to eq(132.8)
-    expect( @alimento3.valorEnergetico ).to eq(402.2)
+    expect( @chocolate.valorEnergetico ).to eq(479.2)
+    expect( @pollo.valorEnergetico ).to eq(132.8)
+    expect( @queso.valorEnergetico ).to eq(402.2)
   end
 
   it "Impacto Ambiental diario de un hombre 20-39" do
@@ -107,11 +107,22 @@ RSpec.describe Prct06Tdd do
 
       @lista1 = Lista.new()
       @lista2 = Lista.new()
+      @españolaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
+      @españolaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
+      @vascaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
+      @vascaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
+      @vegetariaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
+      @vegetariaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
+      @vegetalianaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] ) 
+      @vegetalianaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
+      @locuraCarneH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
+      @locuraCarneM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )      
+
     end
 
     it "Creación de un método Lista" do
       expect( @lista1 ).not_to eq( nil )
-      expect( @alimento1 ).not_to eq( nil )
+      expect( @chocolate ).not_to eq( nil )
     end
 
     it "Lista vacía" do
@@ -120,51 +131,51 @@ RSpec.describe Prct06Tdd do
     end
 
     it "Insertar adelante" do
-      @lista1.insertaAdelante( @alimento5 )
-      @lista1.insertaAdelante( @alimento4 )
-      @lista1.insertaAdelante( @alimento3 )
-      @lista1.insertaAdelante( @alimento2 )
-      @lista1.insertaAdelante( @alimento1 )
+      @lista1.insertaAdelante( @carne_vaca )
+      @lista1.insertaAdelante( @tofu )
+      @lista1.insertaAdelante( @queso )
+      @lista1.insertaAdelante( @pollo )
+      @lista1.insertaAdelante( @chocolate )
       expect( @lista1.cabeza.prev ).to eq( nil )
-      expect( @lista1.cabeza.value ).to eq( @alimento1 )
-      expect( @lista1.cabeza.next.value ).to eq( @alimento2 )
+      expect( @lista1.cabeza.value ).to eq( @chocolate )
+      expect( @lista1.cabeza.next.value ).to eq( @pollo )
       expect( @lista1.tamaño ).to eq( 5 )
     end
 
     it "Insertar Atrás" do
-      @lista1.insertaAtras( @alimento1 )
-      @lista1.insertaAtras( @alimento2 )
-      @lista1.insertaAtras( @alimento3 )
-      @lista1.insertaAtras( @alimento4 )
-      @lista1.insertaAtras( @alimento5 )
-      expect(@lista1.cola.value).to eq( @alimento5 )
-      expect(@lista1.cola.prev.value).to eq( @alimento4 )
+      @lista1.insertaAtras( @chocolate )
+      @lista1.insertaAtras( @pollo )
+      @lista1.insertaAtras( @queso )
+      @lista1.insertaAtras( @tofu )
+      @lista1.insertaAtras( @carne_vaca )
+      expect(@lista1.cola.value).to eq( @carne_vaca )
+      expect(@lista1.cola.prev.value).to eq( @tofu )
       expect(@lista1.tamaño).to eq( 5 )
     end 
 
     it "Extraer por delante" do
       expect(@lista1.extraerDelante).to eq("Lista Vacía")
-      @lista1.insertaAdelante( @alimento3 )
-      @lista1.insertaAdelante( @alimento2 )
-      @lista1.insertaAdelante( @alimento1 )
-      @lista1.insertaAtras( @alimento4 )
-      @lista1.insertaAtras( @alimento5 )
-      @lista1.insertaAtras( @alimento6 )
-      expect(@lista1.extraerDelante).to eq( @alimento1 )
-      expect(@lista1.cabeza.next.value).to eq( @alimento3 )
+      @lista1.insertaAdelante( @queso )
+      @lista1.insertaAdelante( @pollo )
+      @lista1.insertaAdelante( @chocolate )
+      @lista1.insertaAtras( @tofu )
+      @lista1.insertaAtras( @carne_vaca )
+      @lista1.insertaAtras( @cerveza )
+      expect(@lista1.extraerDelante).to eq( @chocolate )
+      expect(@lista1.cabeza.next.value).to eq( @queso )
       expect(@lista1.tamaño).to eq( 5 )
     end
 
     it "Extraer por detrás" do
       expect(@lista1.extraerDetras).to eq("Lista Vacía")
-      @lista1.insertaAdelante( @alimento3 )
-      @lista1.insertaAdelante( @alimento2 )
-      @lista1.insertaAdelante( @alimento1 )
-      @lista1.insertaAtras( @alimento4 )
-      @lista1.insertaAtras( @alimento5 )
-      @lista1.insertaAtras( @alimento6 )
-      expect(@lista1.extraerDetras).to eq( @alimento6 )
-      expect(@lista1.cola.value).to eq( @alimento5 )
+      @lista1.insertaAdelante( @queso )
+      @lista1.insertaAdelante( @pollo )
+      @lista1.insertaAdelante( @chocolate )
+      @lista1.insertaAtras( @tofu )
+      @lista1.insertaAtras( @carne_vaca )
+      @lista1.insertaAtras( @cerveza )
+      expect(@lista1.extraerDetras).to eq( @cerveza )
+      expect(@lista1.cola.value).to eq( @carne_vaca )
       expect(@lista1.tamaño).to eq( 5 )
     end
 
@@ -205,6 +216,7 @@ RSpec.describe Prct06Tdd do
       expect( dietaEmisionesDiarias( @locuraCarneH ) ).to eq( "#{1.5}kg CO2eq diario" )
       expect( dietaEmisionesAnual( @locuraCarneM ) ).to eq( "#{150}kg CO2eq anual" )
       expect( dietaMetrosCuadrados( @locuraCarneM ) ).to eq( "#{750}m2/año" )
+      puts 
     end
   end
 end
