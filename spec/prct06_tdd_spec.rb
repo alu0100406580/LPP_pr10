@@ -99,10 +99,8 @@ RSpec.describe Prct06Tdd do
   
   describe "Práctica 7" do
     before :each do
-
       @lista1 = Lista.new()
       @lista2 = Lista.new()
-  
     end
 
     it "Creación de un método Lista" do
@@ -114,5 +112,18 @@ RSpec.describe Prct06Tdd do
       expect(@lista1.is_empty?).to eq(true)
       expect(@lista2.is_empty?).to eq(true)
     end
+
+    it "Insertar adelante" do
+      @lista1.insertaAdelante(@alimento5)
+      @lista1.insertaAdelante(@alimento4)
+      @lista1.insertaAdelante(@alimento3)
+      @lista1.insertaAdelante(@alimento2)
+      @lista1.insertaAdelante(@alimento1)
+      expect(@lista1.cabeza.prev).to eq(nil)
+      expect(@lista1.cabeza.value).to eq(@alimento1)
+      expect(@lista1.cabeza.next.value).to eq(@alimento2)
+      expect(@lista1.tamaño).to eq(5)
+    end
+
   end
 end
