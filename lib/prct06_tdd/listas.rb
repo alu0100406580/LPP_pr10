@@ -4,18 +4,32 @@ Node = Struct.new(:value, :next, :prev)
 
 class Lista
 
-    include Enumerable
-    include Comparable
+  include Enumerable
+  include Comparable
     
-    attr_accessor :cabeza, :cola, :tamaño
+  attr_accessor :cabeza, :cola, :tamaño
 
-    def initialize()
-        @cabeza = nil
-        @cola = nil
-        @tamaño = 0
-    end
+  def initialize()
+    @cabeza = nil
+    @cola = nil
+    @tamaño = 0
+  end
 
-    def is_empty?
-        return self.tamaño.zero?
+  def is_empty?
+    return self.tamaño.zero?
+  end
+
+  def insertaAdelante(valor) 
+    nodo = Node.new(valor,nil,nil)    
+    if (self.tamaño == 0)
+      @cabeza = nodo
+      @cola = nodo
+    else
+      nodo["next"] = @cabeza
+        @cabeza.prev = nodo
+        @cabeza = nodo
     end
+      @tamaño = @tamaño + 1
+  end
+
 end
