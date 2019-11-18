@@ -47,5 +47,26 @@ class Lista
     @tamaño = @tamaño + 1
   end
 
+  def extraerDelante
+    if(self.tamaño == 0)
+       return "Lista Vacía"
+    else
+       nodoAux = @cabeza
+       @cabeza = @cabeza["next"]
+       @tamaño = @tamaño - 1
+       return nodoAux["value"]
+    end
+  end
+
+  def extraerDetras
+    if(self.tamaño == 0)
+      return "Lista Vacía"
+    else
+      nodoAux = @cola
+      @cola = @cola["prev"]
+      @tamaño = @tamaño - 1
+      return nodoAux["value"]
+    end
+  end
 
 end
