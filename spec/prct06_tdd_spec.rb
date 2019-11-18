@@ -125,5 +125,16 @@ RSpec.describe Prct06Tdd do
       expect( @lista1.tamaño ).to eq( 5 )
     end
 
+    it "Insertar Atrás" do
+      @lista1.insertaAtras( @alimento1 )
+      @lista1.insertaAtras( @alimento2 )
+      @lista1.insertaAtras( @alimento3 )
+      @lista1.insertaAtras( @alimento4 )
+      @lista1.insertaAtras( @alimento5 )
+      expect(@lista1.cola.value).to eq( @alimento5 )
+      expect(@lista1.cola.prev.value).to eq( @alimento4 )
+      expect(@lista1.tamaño).to eq( 5 )
+    end 
+
   end
 end
