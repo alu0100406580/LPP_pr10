@@ -136,5 +136,31 @@ RSpec.describe Prct06Tdd do
       expect(@lista1.tamaño).to eq( 5 )
     end 
 
+    it "Extraer por delante" do
+      expect(@lista1.extraerDelante).to eq("Lista Vacía")
+      @lista1.insertaAdelante( @alimento1 )
+      @lista1.insertaAdelante( @alimento2 )
+      @lista1.insertaAdelante( @alimento3 )
+      @lista1.insertaAtras( @alimento3 )
+      @lista1.insertaAtras( @alimento4 )
+      @lista1.insertaAtras( @alimento5 )
+      expect(@lista1.extraerDelante).to eq( @alimento3 )
+      expect(@lista1.cabeza.next.value).to eq( @alimento1 )
+      expect(@lista1.tamaño).to eq( 5 )
+    end
+
+    it "Extraer por detrás" do
+      expect(@lista1.extraerDetras).to eq("Lista Vacía")
+      @lista1.insertaAdelante( @alimento1 )
+      @lista1.insertaAdelante( @alimento2 )
+      @lista1.insertaAdelante( @alimento3 )
+      @lista1.insertaAtras( @alimento3 )
+      @lista1.insertaAtras( @alimento4 )
+      @lista1.insertaAtras( @alimento5 )
+      expect(@lista1.extraerDetras).to eq( @alimento5 )
+      expect(@lista1.cola.value).to eq( @alimento4 )
+      expect(@lista1.tamaño).to eq( 5 )
+    end
+
   end
 end

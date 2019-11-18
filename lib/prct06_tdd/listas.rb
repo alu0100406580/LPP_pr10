@@ -45,6 +45,7 @@ class Lista
       @cola = nodo
     end
     @tamaño = @tamaño + 1
-  end  
+  end
+
 
 end
