@@ -20,6 +20,7 @@ class Lista
   end
 
   def insertaAdelante(valor) 
+
     nodo = Node.new(valor,nil,nil)    
     if (self.tamaño == 0)
       @cabeza = nodo
@@ -31,5 +32,19 @@ class Lista
     end
       @tamaño = @tamaño + 1
   end
+  
+  def insertaAtras(valor)
+
+    nodo = Node.new(valor,nil,nil)
+    if (self.tamaño == 0)
+      @cabeza = nodo
+      @cola = nodo
+    else
+      nodo["prev"] = @cola
+      @cola.next = nodo
+      @cola = nodo
+    end
+    @tamaño = @tamaño + 1
+  end  
 
 end
