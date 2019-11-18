@@ -95,5 +95,24 @@ RSpec.describe Prct06Tdd do
   it "Impacto Ambiental diario de una mujer 20-39" do
     expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g con una emisión de #{10.64}KgCO2eq")
   end
+
   
+  describe "Práctica 7" do
+    before :each do
+
+      @lista1 = Lista.new()
+      @lista2 = Lista.new()
+  
+    end
+
+    it "Creación de un método Lista" do
+      expect(@lista1).not_to eq(nil)
+      expect(@alimento1).not_to eq(nil)
+    end
+
+    it "Lista vacía" do
+      expect(@lista1.is_empty?).to eq(true)
+      expect(@lista2.is_empty?).to eq(true)
+    end
+  end
 end
