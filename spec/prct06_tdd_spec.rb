@@ -16,6 +16,9 @@ RSpec.describe Prct06Tdd do
     @alimento10 = Alimento.new( "nuez",  20.0, 21.0, 54.0, 0.3, 7.9 )
     @alimento11 = Alimento.new( "leche de vaca", 3.3, 4.8, 3.2, 3.2, 8.9 )
     @alimento12 = Alimento.new( "huevos",  13.0, 1.1, 11.0, 4.2, 5.7 )
+    @alimento13 = Alimento.new( "camarones", 17.6, 1.5, 0.6, 18.0, 2.0 )
+    @alimento14 = Alimento.new( "cerdo", 21.5, 0.0, 6.3, 7.6, 11.0 )
+    @alimento15 = Alimento.new( "café", 0.1, 0.0, 0.0, 0.4, 0.3 )
     
     @alimentos = [ @alimento1, @alimento1, @alimento1, @alimento1, @alimento10, @alimento12 ]
     @alimentos2 = [ @alimento1, @alimento1, @alimento1, @alimento10, @alimento6, @alimento11 ]
@@ -99,6 +102,9 @@ RSpec.describe Prct06Tdd do
   
   describe "Práctica 7" do
     before :each do
+      #1.chocolate, 2.pollo, 3.queso, 4.tofu, 5.carne_vaca, 6.cerveza, 7.carne_cordero, 8.salmón,
+      #9.lentejas, 10.nuez, 11.leche_vaca, 12.huevos, 13.camarones, 14.cerdo, 15.café
+
       @lista1 = Lista.new()
       @lista2 = Lista.new()
     end
@@ -162,5 +168,43 @@ RSpec.describe Prct06Tdd do
       expect(@lista1.tamaño).to eq( 5 )
     end
 
+    it "Lista de alimentos dieta española y la vasca" do
+      # la española ( 40 % de carbohidratos, 40 % de grasas, 20 % de proteı́nas )
+      # la vasca ( 60 % de carbohidratos, 25 % de grasas, 15 % de proteı́nas )
+      expect( dietaPorcentajeHombre( @españolaH ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaPorcentajeMujer( @españolaM ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaEmisionesDiarias( @españolaH ) ).to eq( "#{1.5}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @españolaM ) ).to eq( "#{150}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @españolaM ) ).to eq( "#{750}m2/año" )
+      expect( dietaPorcentajeHombre( @vascaH ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
+      expect( dietaPorcentajeMujer( @vascaM ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
+      expect( dietaEmisionesDiarias( @vascaH ) ).to eq( "#{1.5}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vascaM ) ).to eq( "#{150}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vascaM ) ).to eq( "#{750}m2/año" ) 
+    end
+
+    it "Lista de alimentos dieta vegetaria y vegetaliana" do
+      # la vegetaria ( 40 % de carbohidratos, 40 % de grasas, 20 % de proteı́nas )
+      # la vegetaliana ( 60 % de carbohidratos, 25 % de grasas, 15 % de proteı́nas )
+      expect( dietaPorcentajeHombre( @vegetariaH ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaPorcentajeMujer( @vegetariaM ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaEmisionesDiarias( @vegetariaH ) ).to eq( "#{1.5}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vegetariaM ) ).to eq( "#{150}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vegetariaM ) ).to eq( "#{750}m2/año" )
+      expect( dietaPorcentajeHombre( @vegetalianaH ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
+      expect( dietaPorcentajeMujer( @vegetalianaM ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
+      expect( dietaEmisionesDiarias( @vegetalianaH ) ).to eq( "#{1.5}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vegetalianaM ) ).to eq( "#{150}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vegetalianaM ) ).to eq( "#{750}m2/año" )
+    end
+
+    it "Lista de la locura por la carne" do
+      # consumo de carne del 50% 
+      expect( dietaPorcentajeHombre( @locuraCarneH ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaPorcentajeMujer( @locuraCarneM ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
+      expect( dietaEmisionesDiarias( @locuraCarneH ) ).to eq( "#{1.5}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @locuraCarneM ) ).to eq( "#{150}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @locuraCarneM ) ).to eq( "#{750}m2/año" )
+    end
   end
 end

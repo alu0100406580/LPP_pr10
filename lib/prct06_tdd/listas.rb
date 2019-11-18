@@ -69,4 +69,18 @@ class Lista
     end
   end
 
+  def to_s
+    nodoAux = @cabeza
+    arr = []
+    if (self.tamaño == 0)
+        return "Lista Vacía"
+    else
+        while(nodoAux != nil)                
+            arr.push nodoAux["value"]
+            nodoAux = nodoAux["next"]
+        end
+        return arr
+    end
+end
+
 end
