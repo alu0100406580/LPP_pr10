@@ -120,16 +120,16 @@ RSpec.describe Prct06Tdd do
 
       @lista1 = Lista.new()
       @lista2 = Lista.new()
-      @españolaH = Lista.new( [@chocolate, @pollo, @queso, @lentejas, @nuez, @chocolate] )
+      @españolaH = Lista.new( [ @chocolate, @pollo, @queso, @lentejas, @nuez, @chocolate] )
       @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
-      @vascaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
-      @vascaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
-      @vegetariaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
-      @vegetariaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
-      @vegetalianaH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] ) 
-      @vegetalianaM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
-      @locuraCarneH = Lista.new( [@chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos] )
-      @locuraCarneM = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ] )
+      @vascaH = Lista.new( [ @lentejas, @lentejas, @lentejas, @chocolate, @chocolate, @leche_vaca, @leche_vaca, @chocolate, @chocolate] )
+      @vascaM = Lista.new( [ @lentejas, @chocolate, @chocolate, @leche_vaca, @chocolate, @chocolate] )
+      @vegetariaH = Lista.new( [ @leche_vaca, @leche_vaca, @leche_vaca, @huevos, @chocolate, @chocolate, @leche_vaca, @chocolate, @huevos, @huevos, @tofu, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @huevos, @huevos ] )
+      @vegetariaM = Lista.new( [ @leche_vaca, @leche_vaca, @leche_vaca, @huevos, @chocolate, @leche_vaca, @chocolate, @huevos, @huevos, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @leche_vaca, @huevos ] )
+      @vegetalianaH = Lista.new( [ @chocolate, @chocolate, @chocolate, @nuez, @tofu, @nuez, @tofu ] ) 
+      @vegetalianaM = Lista.new( [ @chocolate, @nuez, @tofu, @nuez, @tofu, @lentejas ] )
+      @locuraCarneH = Lista.new( [ @pollo, @cerdo, @carne_cordero, @carne_vaca, @nuez, @chocolate, @cerdo, @nuez, @queso ] )
+      @locuraCarneM = Lista.new( [ @pollo, @cerdo, @carne_cordero, @carne_vaca, @nuez, @nuez, @queso ] )
 
       def dietaPorcentajeHombre( dietaLista )
       
@@ -190,7 +190,7 @@ RSpec.describe Prct06Tdd do
           gases += nodoAux["value"].gasEfectoInv()
           nodoAux = nodoAux["next"]
         end
-        return "#{gases}kg CO2eq diario"
+        return "#{gases.round}kg CO2eq diario"
         end
       end
 
@@ -205,7 +205,7 @@ RSpec.describe Prct06Tdd do
           gases += nodoAux["value"].gasEfectoInv()
           nodoAux = nodoAux["next"]
         end
-        return "#{gases * 365}kg CO2eq anual"
+        return "#{gases.round * 365}kg CO2eq anual"
         end
       end
 
@@ -220,7 +220,7 @@ RSpec.describe Prct06Tdd do
           metros += nodoAux["value"].terrenoAño()
           nodoAux = nodoAux["next"]
         end
-        return "#{metros}m2/año"
+        return "#{metros.round}m2/año"
         end
       end
 
@@ -290,38 +290,38 @@ RSpec.describe Prct06Tdd do
       # la vasca ( 60 % de carbohidratos, 25 % de grasas, 15 % de proteı́nas )
       expect( dietaPorcentajeHombre( @españolaH ) ).to eq( "#{82}%CDR, #{40}% carbohidratos, #{36}% grasas, #{24}% proteínas" )
       expect( dietaPorcentajeMujer( @españolaM ) ).to eq( "#{92}%CDR, #{36}% carbohidratos, #{37}% grasas, #{27}% proteínas" )
-      expect( dietaEmisionesDiarias( @españolaH ) ).to eq( "#{22.0}kg CO2eq diario" )
-      expect( dietaEmisionesAnual( @españolaM ) ).to eq( "#{7548.2}kg CO2eq anual" )
-      expect( dietaMetrosCuadrados( @españolaM ) ).to eq( "#{64.04}m2/año" )
-      expect( dietaPorcentajeHombre( @vascaH ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
-      expect( dietaPorcentajeMujer( @vascaM ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
-      expect( dietaEmisionesDiarias( @vascaH ) ).to eq( "#{1.5}kg CO2eq diario" )
-      expect( dietaEmisionesAnual( @vascaM ) ).to eq( "#{150}kg CO2eq anual" )
-      expect( dietaMetrosCuadrados( @vascaM ) ).to eq( "#{750}m2/año" ) 
+      expect( dietaEmisionesDiarias( @españolaH ) ).to eq( "#{22}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @españolaM ) ).to eq( "#{7665}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @españolaM ) ).to eq( "#{64}m2/año" )
+      expect( dietaPorcentajeHombre( @vascaH ) ).to eq( "#{99}%CDR, #{61}% carbohidratos, #{22}% grasas, #{17}% proteínas" )
+      expect( dietaPorcentajeMujer( @vascaM ) ).to eq( "#{100}%CDR, #{59}% carbohidratos, #{30}% grasas, #{11}% proteínas" )
+      expect( dietaEmisionesDiarias( @vascaH ) ).to eq( "#{17}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vascaM ) ).to eq( "#{4745}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vascaM ) ).to eq( "#{26}m2/año" ) 
     end
 
-    # it "Lista de alimentos dieta vegetaria y vegetaliana" do
-    #   # la vegetaria ( 40 % de carbohidratos, 40 % de grasas, 20 % de proteı́nas )
-    #   # la vegetaliana ( 60 % de carbohidratos, 25 % de grasas, 15 % de proteı́nas )
-    #   expect( dietaPorcentajeHombre( @vegetariaH ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
-    #   expect( dietaPorcentajeMujer( @vegetariaM ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
-    #   expect( dietaEmisionesDiarias( @vegetariaH ) ).to eq( "#{1.5}kg CO2eq diario" )
-    #   expect( dietaEmisionesAnual( @vegetariaM ) ).to eq( "#{150}kg CO2eq anual" )
-    #   expect( dietaMetrosCuadrados( @vegetariaM ) ).to eq( "#{750}m2/año" )
-    #   expect( dietaPorcentajeHombre( @vegetalianaH ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
-    #   expect( dietaPorcentajeMujer( @vegetalianaM ) ).to eq( "#{60}% carbohidratos, #{25}% grasas, #{15}% proteínas" )
-    #   expect( dietaEmisionesDiarias( @vegetalianaH ) ).to eq( "#{1.5}kg CO2eq diario" )
-    #   expect( dietaEmisionesAnual( @vegetalianaM ) ).to eq( "#{150}kg CO2eq anual" )
-    #   expect( dietaMetrosCuadrados( @vegetalianaM ) ).to eq( "#{750}m2/año" )
-    # end
+    it "Lista de alimentos dieta vegetaria y vegetaliana" do
+      # la vegetaria ( 40 % de carbohidratos, 40 % de grasas, 20 % de proteı́nas )
+      # la vegetaliana ( 60 % de carbohidratos, 25 % de grasas, 15 % de proteı́nas )
+      expect( dietaPorcentajeHombre( @vegetariaH ) ).to eq( "#{95}%CDR, #{39}% carbohidratos, #{37}% grasas, #{24}% proteínas" )
+      expect( dietaPorcentajeMujer( @vegetariaM ) ).to eq( "#{98}%CDR, #{39}% carbohidratos, #{36}% grasas, #{25}% proteínas" )
+      expect( dietaEmisionesDiarias( @vegetariaH ) ).to eq( "#{59}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vegetariaM ) ).to eq( "#{20805}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vegetariaM ) ).to eq( "#{128}m2/año" )
+      expect( dietaPorcentajeHombre( @vegetalianaH ) ).to eq( "#{97}%CDR, #{40}% carbohidratos, #{45}% grasas, #{15}% proteínas" )
+      expect( dietaPorcentajeMujer( @vegetalianaM ) ).to eq( "#{98}%CDR, #{38}% carbohidratos, #{39}% grasas, #{22}% proteínas" )
+      expect( dietaEmisionesDiarias( @vegetalianaH ) ).to eq( "#{12}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @vegetalianaM ) ).to eq( "#{2555}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @vegetalianaM ) ).to eq( "#{27}m2/año" )
+    end
 
-    # it "Lista de la locura por la carne" do
-    #   # consumo de carne del 50% 
-    #   expect( dietaPorcentajeHombre( @locuraCarneH ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
-    #   expect( dietaPorcentajeMujer( @locuraCarneM ) ).to eq( "#{40}% carbohidratos, #{40}% grasas, #{20}% proteínas" )
-    #   expect( dietaEmisionesDiarias( @locuraCarneH ) ).to eq( "#{1.5}kg CO2eq diario" )
-    #   expect( dietaEmisionesAnual( @locuraCarneM ) ).to eq( "#{150}kg CO2eq anual" )
-    #   expect( dietaMetrosCuadrados( @locuraCarneM ) ).to eq( "#{750}m2/año" )
-    # end
+    it "Lista de la locura por la carne" do
+      # consumo de carne del 50% 
+      expect( dietaPorcentajeHombre( @locuraCarneH ) ).to eq( "#{98}%CDR, #{19}% carbohidratos, #{44}% grasas, #{37}% proteínas" )
+      expect( dietaPorcentajeMujer( @locuraCarneM ) ).to eq( "#{101}%CDR, #{12}% carbohidratos, #{48}% grasas, #{40}% proteínas" )
+      expect( dietaEmisionesDiarias( @locuraCarneH ) ).to eq( "#{105}kg CO2eq diario" )
+      expect( dietaEmisionesAnual( @locuraCarneM ) ).to eq( "#{34675}kg CO2eq anual" )
+      expect( dietaMetrosCuadrados( @locuraCarneM ) ).to eq( "#{424}m2/año" )
+    end
   end
 end
