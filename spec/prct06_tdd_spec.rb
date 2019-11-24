@@ -327,6 +327,7 @@ RSpec.describe Prct06Tdd do
 
   describe "Práctica 8" do
     before :each do
+      @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
     end
 
     it "Comparar dos alimentos" do
@@ -335,6 +336,14 @@ RSpec.describe Prct06Tdd do
       expect( @carne_vaca >= @cafe ).to eq( true )
       expect( @carne_vaca <= @cafe ).to eq( false )
       expect( @carne_vaca == @cafe ).to eq( false )
+    end
+
+    it "Listas enumerables" do
+      expect( @españolaM.collect { | alimento | alimento.nombre + "_alimento" } ).to eq( [ "chocolate_alimento",  "lentejas_alimento",  "nuez_alimento",  "queso_alimento",  "cerveza_alimento",  "tofu_alimento",  "huevos_alimento",  "cerveza_alimento" ] )
+      expect( @españolaM.select{ | alimento | alimento.carbohidratos > 10 } ).to eq([ @chocolate, @lentejas, @nuez, @queso, @huevos ] )
+      expect( @españolaM.max ).to eq( @carne_vaca )
+      expect( @españolaM.min).to eq( @cerveza )
+      expect( @españolaM.sort ).to eq( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
     end
   end
 end
