@@ -324,4 +324,17 @@ RSpec.describe Prct06Tdd do
       expect( dietaMetrosCuadrados( @locuraCarneM ) ).to eq( "#{424}m2/año" )
     end
   end
+
+  describe "Práctica 8" do
+    before :each do
+    end
+
+    it "Comparar dos alimentos" do
+      expect( @carne < @café ).to eq( true )
+      expect( @carne > @café ).to eq( true )
+      expect( @carne >= @café ).to eq( true )
+      expect( @carne <= @café ).to eq( true )
+      expect( @carne == @café ).to eq( true )
+    end
+  end
 end
