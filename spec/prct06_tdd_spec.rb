@@ -340,10 +340,10 @@ RSpec.describe Prct06Tdd do
 
     it "Listas enumerables" do
       expect( @españolaM.collect { | alimento | alimento.nombre + "_alimento" } ).to eq( [ "chocolate_alimento",  "lentejas_alimento",  "nuez_alimento",  "queso_alimento",  "cerveza_alimento",  "tofu_alimento",  "huevos_alimento",  "cerveza_alimento" ] )
-      expect( @españolaM.select{ | alimento | alimento.carbohidratos > 10 } ).to eq([ @chocolate, @lentejas, @nuez, @queso, @huevos ] )
-      expect( @españolaM.max ).to eq( @carne_vaca )
+      expect( @españolaM.select{ | alimento | alimento.carbohidratos > 10 } ).to eq([ @chocolate, @lentejas, @nuez] )
+      expect( @españolaM.max ).to eq( @nuez )
       expect( @españolaM.min).to eq( @cerveza )
-      expect( @españolaM.sort ).to eq( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
+      expect( @españolaM.sort ).to eq( [ @cerveza, @cerveza, @tofu, @huevos, @lentejas, @queso, @chocolate, @nuez ] )
     end
   end
 end

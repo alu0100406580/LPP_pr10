@@ -5,7 +5,6 @@ Node = Struct.new(:value, :next, :prev)
 class Lista
 
   include Enumerable
-  include Comparable
     
   attr_accessor :cabeza, :cola, :tamaño
 
@@ -97,6 +96,15 @@ class Lista
             nodoAux = nodoAux["next"]
         end
         return arr
+    end
+  end
+
+  def each
+    nodoAux = Node.new(nil,nil,nil)
+    nodoAux = @cabeza
+    while(nodoAux != nil)
+        yield nodoAux["value"]
+        nodoAux = nodoAux["next"]
     end
   end
 
