@@ -1,5 +1,7 @@
 class Alimento
 
+  include Comparable
+
   attr_reader :nombre, :proteinas, :carbohidratos, :lipidos, :gasEfectoInv, :terrenoAño
   attr_accessor :nombre, :proteinas, :carbohidratos, :lipidos, :gasEfectoInv, :terrenoAño
 
@@ -29,7 +31,12 @@ class Alimento
   end
 
   def valorEnergetico
-    (@carbohidratos * 4 + @lipidos * 9 + @proteinas * 4 )
+    ( @carbohidratos * 4 + @lipidos * 9 + @proteinas * 4 )
+  end
+
+  def <=>(other)
+    return nil unless other.instance_of? Alimento
+    ( self.valorEnergetico + self.gasEfectoInv ) <=> ( other.valorEnergetico + other.gasEfectoInv )
   end
 
 end

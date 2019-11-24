@@ -330,11 +330,11 @@ RSpec.describe Prct06Tdd do
     end
 
     it "Comparar dos alimentos" do
-      expect( @carne < @café ).to eq( true )
-      expect( @carne > @café ).to eq( true )
-      expect( @carne >= @café ).to eq( true )
-      expect( @carne <= @café ).to eq( true )
-      expect( @carne == @café ).to eq( true )
+      expect( @carne_vaca < @cafe ).to eq( false )
+      expect( @carne_vaca > @cafe ).to eq( true )
+      expect( @carne_vaca >= @cafe ).to eq( true )
+      expect( @carne_vaca <= @cafe ).to eq( false )
+      expect( @carne_vaca == @cafe ).to eq( false )
     end
   end
 end
