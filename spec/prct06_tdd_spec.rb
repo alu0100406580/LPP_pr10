@@ -345,5 +345,12 @@ RSpec.describe Prct06Tdd do
       expect( @españolaM.min).to eq( @cerveza )
       expect( @españolaM.sort ).to eq( [ @cerveza, @cerveza, @tofu, @huevos, @lentejas, @queso, @chocolate, @nuez ] )
     end
+
+    it "Clase Plato Energético" do
+      expect( @plato1 ).not_to eq( nil )
+      expect( @plato1.nombre ).to eq( "Ternera con salsa de queso" )
+      expect( @plato1.listaAlimentos ).to eq( [ @carne_vaca, @nuez, @queso ] )
+      expect( @plato1.listaGramos ).to eq( [ 75.0, 45.3, 19.2 ] )
+    end
   end
 end
