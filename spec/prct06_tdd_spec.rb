@@ -328,6 +328,7 @@ RSpec.describe Prct06Tdd do
   describe "Práctica 8" do
     before :each do
       @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
+      @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
     end
 
     it "Comparar dos alimentos" do
@@ -349,8 +350,8 @@ RSpec.describe Prct06Tdd do
     it "Clase Plato Energético" do
       expect( @plato1 ).not_to eq( nil )
       expect( @plato1.nombre ).to eq( "Ternera con salsa de queso" )
-      expect( @plato1.listaAlimentos ).to eq( [ @carne_vaca, @nuez, @queso ] )
-      expect( @plato1.listaGramos ).to eq( [ 75.0, 45.3, 19.2 ] )
+      expect( @plato1.listaAlimentos.to_s ).to eq( Lista.new( [ @carne_vaca, @nuez, @queso ] ).to_s )
+      expect( @plato1.listaGramos.to_s ).to eq(  Lista.new( [ 100, 50, 32  ] ).to_s )         
     end
   end
 end
