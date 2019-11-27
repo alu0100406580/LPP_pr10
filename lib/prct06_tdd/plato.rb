@@ -21,7 +21,7 @@ class Plato
     @porcenHidratos = hidratosCalculo
   end
 
-  def vctCalculo
+  def vctCalculo()
 
     vct = 0
     index = 0
@@ -33,7 +33,7 @@ class Plato
     vct.round()
   end
 
-  def proteinasCalculo
+  def proteinasCalculo()
 
     proteinas = 0
     index = 0
@@ -47,7 +47,7 @@ class Plato
     (proteinas * 100 / sumaTotalGramos).round()
   end
 
-  def lipidosCalculo
+  def lipidosCalculo()
     
     lipidos = 0
     index = 0
@@ -61,7 +61,7 @@ class Plato
     (lipidos * 100 / sumaTotalGramos).round()
   end
 
-  def hidratosCalculo
+  def hidratosCalculo()
     
     hidratos = 0
     index = 0
@@ -75,7 +75,48 @@ class Plato
     (hidratos * 100 / sumaTotalGramos).round()
   end
 
-  def to_s
+  def to_s()
     "#{@nombre}: proteinas = #{@porcenProteinas}%, lipidos = #{@porcenLipidos}%, hidratos = #{@porcenHidratos}%, vct = #{@vct}Kcal"
+  end
+end
+
+class PlatoAmbiental < Plato
+
+  attr_accessor :emisionesDiarias, :metrosUsoTerreno
+
+  def initialize( nombre, listaAlimentos, listaGramos )
+    super(@nombre = nombre, @listaAlimentos = listaAlimentos, @listaGramos = listaGramos )
+
+    @emisionesDiarias = emisionesCalculo
+    @metrosUsoTerreno = metrosCalculo
+
+  end
+
+  def emisionesCalculo()
+    
+    emisiones = 0
+    index = 0
+    @listaAlimentos.each do | x |
+      index += 1
+      y = @listaGramos.pos( index )
+      emisiones += ( ( x.gasEfectoInv / 100 ) * y )
+    end
+    emisiones.round()
+  end
+
+  def metrosCalculo()
+    
+    metros = 0
+    index = 0
+    @listaAlimentos.each do | x |
+      index += 1
+      y = @listaGramos.pos( index )
+      metros += ( ( x.terrenoAño / 100 ) * y )
+    end
+    metros.round()
+  end
+
+  def eficienciaEnergetica()
+    "EficienciaEnergética -> #{@nombre}: #{@emisionesDiarias}kgCO2eq, #{@metrosUsoTerreno}Terreno m^2/año"
   end
 end

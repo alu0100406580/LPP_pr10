@@ -329,6 +329,7 @@ RSpec.describe Prct06Tdd do
     before :each do
       @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
       @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
+      @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
     end
 
     it "Comparar dos alimentos" do
@@ -359,16 +360,16 @@ RSpec.describe Prct06Tdd do
       expect( @plato1.to_s ).to eq( "Ternera con salsa de queso: proteinas = #{21}%, lipidos = #{22}%, hidratos = #{6}%, vct = #{566}Kcal" )     
     end
 
-    it "Clase Plato Ambiental" do
+    it "Clase Plato Ambiental y pruebas de tipo" do
 
       expect( @plato2 ).not_to eq( nil )
-      expect( @plato2.emisionesDiarias ).to eq( )
-      expect( @plato2.metroUsoTerreno ).to eq( )
-      expect( @plato2.eficienciaEnergetica ).to eq( )
-      expect(@plato2.is_a?( Plato ) ).to eq( true )
+      expect( @plato2.emisionesDiarias ).to eq( 35 )
+      expect( @plato2.metrosUsoTerreno ).to eq( 86 )
+      expect( @plato2.eficienciaEnergetica ).to eq( "EficienciaEnergética -> Lasaña de de pollo: #{35}kgCO2eq, #{86}Terreno m^2/año" )
+      expect( @plato1.is_a?( PlatoAmbiental ) ).not_to eq( true )
       expect( @plato2.instance_of?( PlatoAmbiental ) ).to eq( true )
       expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Object, Kernel, BasicObject ] )
-      expect( @plato1 ).to be_a_kind_of( Plato )
+      expect( @plato2 ).to be_a_kind_of( PlatoAmbiental )
     end
   end
 end
