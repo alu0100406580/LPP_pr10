@@ -99,6 +99,19 @@ class Lista
     end
   end
 
+  def pos( pos )
+    i = 1
+    self.each do | x |
+      if i == pos
+        return x
+      end 
+      i += 1
+    end
+    nodoAux = Node.new(nil,nil,nil)
+    nodoAux = @cola
+    return nodoAux["value"]
+  end
+
   def each
     nodoAux = Node.new(nil,nil,nil)
     nodoAux = @cabeza

@@ -352,11 +352,12 @@ RSpec.describe Prct06Tdd do
       expect( @plato1.nombre ).to eq( "Ternera con salsa de queso" )
       expect( @plato1.listaAlimentos.to_s ).to eq( Lista.new( [ @carne_vaca, @nuez, @queso ] ).to_s )
       expect( @plato1.listaGramos.to_s ).to eq(  Lista.new( [ 100, 50, 32  ] ).to_s )
-      expect( @plato1.vct ).to eq( )
-      expect( @plato1.porcenProteinas ).to eq( )
-      expect( @plato1.porcenLipidos ).to eq( )
-      expect( @plato1.porcenHidratos ).to eq( )
-      expect( @plato1.to_s ).to eq( )         
+      expect( @plato1.vct ).to eq( 566 )
+      p @queso.proteinas    
+      expect( @plato1.porcenProteinas ).to eq( 21 )
+      expect( @plato1.porcenLipidos ).to eq( 22 )
+      expect( @plato1.porcenHidratos ).to eq( 6 )
+      expect( @plato1.to_s ).to eq( "Ternera con salsa de queso: proteinas = #{21}%, lipidos = #{22}%, hidratos = #{6}%, vct = #{566}Kcal" )     
     end
   end
 end
