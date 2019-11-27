@@ -78,6 +78,4 @@ class Plato
   def to_s
     "#{@nombre}: proteinas = #{@porcenProteinas}%, lipidos = #{@porcenLipidos}%, hidratos = #{@porcenHidratos}%, vct = #{@vct}Kcal"
   end
-
-
 end
