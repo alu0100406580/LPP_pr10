@@ -330,6 +330,27 @@ RSpec.describe Prct06Tdd do
       @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
       @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
       @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
+
+      @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
+      @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
+      @chocolateALaTaza = Plato.new( "Chocolate a la taza", [ @chocolate, @nuez, @leche_vaca ] , [ 300, 100, 500 ] )
+      @PotajeDeLentejas = PlatoAmbiental.new( "Potaje de Lentejas", [ @lentejas, @queso, @pollo ], [240, 30, 65 ] )
+      @MenuEspañol = PlatoAmbiental.new( "Almuerzo Continental", [ @cerdo, @huevos, @cafe, @chocolate], [ 190, 160, 35, 80] )
+      @polloALaCerveza = Plato.new( "Pollo a la Cerveza", [ @pollo, @cerveza, @tofu ], [ 220, 240, 35 ] )
+      @LentejasEstofadas = Plato.new( "Lentejas Estofadas", [ @lentejas, @cerdo ], [ 210, 100 ] )
+      @Tiramisu = PlatoAmbiental.new( "Tiramisu", [ @chocolate, @cafe, @leche_vaca, @huevos ], [ 500, 250, 125, 100 ] )
+      @BizcochoDeNueces = Plato.new( "Bizcocho de Nueces", [ @nuez, @leche_vaca, @huevos ], [ 50, 600, 400 ] )
+      @MousseDeCafe = PlatoAmbiental.new( "Mousse de Café", [ @leche_vaca, @huevos, @cafe ], [ 400, 360, 210 ] )
+      @HamburguesaLentejas = PlatoAmbiental.new( "Hamburguesa de lentejas", [ @huevos, @lentejas ], [ 200, 300 ] )
+      @cerdoSalsaDeQueso = Plato.new( "Cerdo en salsa de queso", [ @cerdo, @leche_vaca, @queso ], [ 400, 160, 70 ] )
+      @ensaladaDeSalmon = Plato.new( "Ensalada de salmón", [ @salmon , @tofu , @huevos, @queso ], [ 235, 164, 88, 71 ] )
+      @CorderoAlHorno = PlatoAmbiental.new( "Cordero Al horno", [ @carne_cordero, @cerveza], [ 500, 216 ] )
+
+      @PlatosDietaEspañola = Lista.new( [ @PotajeDeLentejas, @MenuEspañol, @polloALaCerveza, @chocolateALaTaza ] )
+      @PlatosDietaVasca = Lista.new( [ @LentejasEstofadas, @Tiramisu, @ensaladaSalmon, @CorderoAlHorno ] )
+      @PlatosDietaVegetaria = Lista.new( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
+      @PlatosDietaVegetaliana = Lista.new( [ @Tiramisu, @HamburguesaLentejas, @chocolateALaTaza, @MousseDeCafe ] )
+      @PlatosDietaLocuraCarne = Lista.new( [ @CorderoAlHorno, @cerdoSalsaDeQueso, @ensaladaSalmon, @chocolateALaTaza ] )
     end
 
     it "Comparar dos alimentos" do
@@ -370,6 +391,14 @@ RSpec.describe Prct06Tdd do
       expect( @plato2.instance_of?( PlatoAmbiental ) ).to eq( true )
       expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Object, Kernel, BasicObject ] )
       expect( @plato2 ).to be_a_kind_of( PlatoAmbiental )
+    end
+
+    it "Dietas de distintos tipos para probar los tipos" do
+      expect( @PlatosDietaEspañola.collect { | plato | "Plato " + plato.nombre  } ).to eq( [ "Plato Potaje de Lentejas", "Plato Almuerzo Continental", "Plato Pollo a la Cerveza", "Plato Chocolate a la taza" ] )
+      expect( @PlatosDietaLocuraCarne.select{ | plato | plato.vct > 100 } ).to eq( [ @CorderoAlHorno, @cerdoSalsaDeQueso, @ensaladaSalmon, @chocolateALaTaza ] )
+      expect( @PlatosDietaVasca.max ).to eq( @LentejasEstofadas )
+      expect( @PlatosDietaVegetaliana.min).to eq( @MousseDeCafe )
+      expect( @PlatosDietaVegetaria.sort ).to eq( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
     end
   end
 end
