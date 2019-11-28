@@ -115,7 +115,7 @@ class Lista
   def each
     nodoAux = Node.new(nil,nil,nil)
     nodoAux = @cabeza
-    while(nodoAux != nil)
+    while nodoAux != nil do
         yield nodoAux["value"]
         nodoAux = nodoAux["next"]
     end

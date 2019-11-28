@@ -1,5 +1,7 @@
 class Plato
 
+  include Comparable
+
   attr_accessor :nombre, :listaAlimentos, :listaGramos, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
 
   def initialize( nombre, listaAlimentos, listaGramos )
@@ -78,18 +80,26 @@ class Plato
   def to_s()
     "#{@nombre}: proteinas = #{@porcenProteinas}%, lipidos = #{@porcenLipidos}%, hidratos = #{@porcenHidratos}%, vct = #{@vct}Kcal"
   end
+
+  def <=>(other)
+    return nil unless other.kind_of? Plato
+      self.vct <=> other.vct
+  end
 end
 
 class PlatoAmbiental < Plato
 
-  attr_accessor :emisionesDiarias, :metrosUsoTerreno
+  attr_accessor :emisionesDiarias, :metrosUsoTerreno, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
 
   def initialize( nombre, listaAlimentos, listaGramos )
-    super(@nombre = nombre, @listaAlimentos = listaAlimentos, @listaGramos = listaGramos )
-
+    super( @nombre = nombre, @listaAlimentos = listaAlimentos, @listaGramos = listaGramos )
+    
+    @vct = vctCalculo
+    @porcenProteinas = proteinasCalculo
+    @porcenLipidos = lipidosCalculo
+    @porcenHidratos = hidratosCalculo
     @emisionesDiarias = emisionesCalculo
     @metrosUsoTerreno = metrosCalculo
-
   end
 
   def emisionesCalculo()
@@ -118,5 +128,14 @@ class PlatoAmbiental < Plato
 
   def eficienciaEnergetica()
     "EficienciaEnergética -> #{@nombre}: #{@emisionesDiarias}kgCO2eq, #{@metrosUsoTerreno}Terreno m^2/año"
+  end
+
+  def <=>(other)
+    return nil unless other.kind_of? Plato
+    if ( other.instance_of? PlatoAmbiental )
+      return ( self.vct + self.emisionesDiarias + self.metrosUsoTerreno ) <=> ( other.vct + other.emisionesDiarias + other.metrosUsoTerreno )
+    else
+      return self.vct <=> other.vct
+    end
   end
 end
