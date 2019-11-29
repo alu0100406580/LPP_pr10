@@ -20,84 +20,120 @@ RSpec.describe Prct06Tdd do
       @camarones = Alimento.new( "camarones", 17.6, 1.5, 0.6, 18.0, 2.0 )
       @cerdo = Alimento.new( "cerdo", 21.5, 0.0, 6.3, 7.6, 11.0 )
       @cafe = Alimento.new( "café", 0.1, 0.0, 0.0, 0.4, 0.3 )
-      
-      @alimentos = [ @chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos ]
-      @alimentos2 = [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ]
-
-      def impactoAmbientalHombre( alimentos )
-        
-        cdr = 0
-        proteinas = 0
-        gases = 0.0
-        alimentos.each do | item |
-          cdr += item.valorEnergetico()
-          proteinas += item.proteinas()
-          gases += item.gasEfectoInv
-        end
-        "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g con una emisión de #{gases}KgCO2eq"
-      end
-
-      def impactoAmbientalMujer( alimentos )
-        
-        cdr = 0
-        proteinas = 0.0
-        gases = 0.0
-        alimentos.each do | item |
-          cdr += item.valorEnergetico()
-          proteinas += item.proteinas()
-          gases += item.gasEfectoInv
-        end
-        "Con este menú obtiene el #{(cdr/23.0).round}% CDR Kcal, y proteinas #{proteinas.round}g/41g con una emisión de #{gases}KgCO2eq"
-      end
     
     end
-
-    it "Creamos la clase Alimento" do
-      expect( Alimento.new() ).not_to eq( nil )
+    context "Creamos la clase Alimento" do
+      it "No nulo" do
+        expect( Alimento.new() ).not_to eq( nil )
+      end
     end
 
-    it "Creamos los alimentos de manera correcta" do
-      expect(@chocolate).not_to eq(nil)
-      expect(@pollo).not_to eq(nil)
-      expect(@queso).not_to eq(nil)
+    context "Creamos los alimentos de manera correcta" do
+      it "chocolate no nulo" do
+        expect( @chocolate ).not_to eq( nil )
+      end
+      it "pollo no nulo" do
+        expect( @pollo ).not_to eq( nil )
+      end
+      it "queso no nulo" do
+        expect( @queso ).not_to eq( nil )
+      end
     end
     
-    it "Nombre del alimento" do
-      expect( @chocolate.identificador ).to eq("El alimento es: chocolate")
-      expect( @pollo.identificador ).to eq("El alimento es: pollo")
-      expect( @queso.identificador ).to eq("El alimento es: queso")
+    context "Nombre del alimento" do
+      it "nombre chocolate" do
+        expect( @chocolate.identificador ).to eq("El alimento es: chocolate")
+      end
+      it "nombre pollo" do
+        expect( @pollo.identificador ).to eq("El alimento es: pollo")
+      end
+      it "nombre queso" do
+        expect( @queso.identificador ).to eq("El alimento es: queso")
+      end
     end
 
-    it "emisiones de gases de efecto invernadero" do
-      expect( @chocolate.emisiones ).to eq("Las emisiones son de: #{2.3} kgCO^2eq")
-      expect( @pollo.emisiones ).to eq("Las emisiones son de: #{5.7} kgCO^2eq")
-      expect( @queso.emisiones ).to eq("Las emisiones son de: #{11.0} kgCO^2eq")
+    context "Emisiones de gases de efecto invernadero" do
+      it "Emisiones del chocolate" do
+        expect( @chocolate.emisiones ).to eq("Las emisiones son de: #{2.3} kgCO^2eq")
+      end
+      it "Emisiones del pollo" do
+        expect( @pollo.emisiones ).to eq("Las emisiones son de: #{5.7} kgCO^2eq")
+      end
+      it "emisiones del queso" do
+        expect( @queso.emisiones ).to eq("Las emisiones son de: #{11.0} kgCO^2eq")
+      end
     end
 
-    it "Terreno utilizado" do
-      expect( @chocolate.terreno ).to eq("El terreno utilizado es de: #{3.4} m^2/año")
-      expect( @pollo.terreno ).to eq("El terreno utilizado es de: #{7.1} m^2/año")
-      expect( @queso.terreno ).to eq("El terreno utilizado es de: #{41.0} m^2/año")
+    context "Terreno utilizado" do
+      it "Terreno usado por el chocolate" do
+        expect( @chocolate.terreno ).to eq("El terreno utilizado es de: #{3.4} m^2/año")
+      end
+      it "Terreno usado por el pollo" do
+        expect( @pollo.terreno ).to eq("El terreno utilizado es de: #{7.1} m^2/año")
+      end
+      it "Terreno usado por el queso" do
+        expect( @queso.terreno ).to eq("El terreno utilizado es de: #{41.0} m^2/año")
+      end
     end
 
-    it "Alimento to_s" do
-      expect( @chocolate.to_s ).to eq("chocolate: proteínas #{5.3}, carbohidratos #{47.0}, lípidos #{30.0}, emisiones #{2.3}, terreno #{3.4}")
-      expect( @pollo.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
-      expect( @queso.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
+    context "Salida de alimento formateado" do
+      it "chocolate to_s" do
+        expect( @chocolate.to_s ).to eq("chocolate: proteínas #{5.3}, carbohidratos #{47.0}, lípidos #{30.0}, emisiones #{2.3}, terreno #{3.4}")
+      end
+      it "pollo to_s" do
+        expect( @pollo.to_s ).to eq("pollo: proteínas #{20.6}, carbohidratos #{0.0}, lípidos #{5.6}, emisiones #{5.7}, terreno #{7.1}")
+      end
+      it "queso to_s" do
+        expect( @queso.to_s ).to eq("queso: proteínas #{25.0}, carbohidratos #{1.3}, lípidos #{33.0}, emisiones #{11.0}, terreno #{41.0}")
+      end
     end
 
-    it "Valor Energético de un alimento" do
-      expect( @chocolate.valorEnergetico ).to eq(479.2)
-      expect( @pollo.valorEnergetico ).to eq(132.8)
-      expect( @queso.valorEnergetico ).to eq(402.2)
+    context "Obtener el valor Energético de un alimento" do
+      it "Valor energético del chocolate" do
+        expect( @chocolate.valorEnergetico ).to eq(479.2)
+      end
+      it "Valor energético del pollo" do
+        expect( @pollo.valorEnergetico ).to eq(132.8)
+      end
+      it "Valor energético del queso" do
+        expect( @queso.valorEnergetico ).to eq(402.2)
+      end
     end
 
-    it "Impacto Ambiental diario de un hombre 20-39" do
-      expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g con una emisión de #{13.7}KgCO2eq")
-    end
+    context "Impacto Ambiental diario" do      
+      it "Impacto Ambiental diario de un hombre 20-39" do
+        @alimentos = [ @chocolate, @chocolate, @chocolate, @chocolate, @nuez, @huevos ]
+        def impactoAmbientalHombre( alimentos )
+          cdr = 0
+          proteinas = 0
+          gases = 0.0
+          alimentos.each do | item |
+            cdr += item.valorEnergetico()
+            proteinas += item.proteinas()
+            gases += item.gasEfectoInv
+          end
+          "Con este menú obtiene el #{(cdr/30.0).round}% CDR Kcal, y proteinas #{proteinas}g/54g con una emisión de #{gases}KgCO2eq"
+        end
 
-    it "Impacto Ambiental diario de una mujer 20-39" do
-      expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g con una emisión de #{10.64}KgCO2eq")
+        expect( impactoAmbientalHombre( @alimentos ) ).to eq("Con este menú obtiene el #{91}% CDR Kcal, y proteinas #{54.2}g/54g con una emisión de #{13.7}KgCO2eq")
+      end
+
+      it "Impacto Ambiental diario de una mujer 20-39" do
+        @alimentos2 = [ @chocolate, @chocolate, @chocolate, @nuez, @cerveza, @leche_vaca ]
+        def impactoAmbientalMujer( alimentos )
+          cdr = 0
+          proteinas = 0.0
+          gases = 0.0
+          alimentos.each do | item |
+            cdr += item.valorEnergetico()
+            proteinas += item.proteinas()
+            gases += item.gasEfectoInv
+          end
+          "Con este menú obtiene el #{(cdr/23.0).round}% CDR Kcal, y proteinas #{proteinas.round}g/41g con una emisión de #{gases}KgCO2eq"
+        end
+
+        expect( impactoAmbientalMujer( @alimentos2 ) ).to eq("Con este menú obtiene el #{94}% CDR Kcal, y proteinas #{40}g/41g con una emisión de #{10.64}KgCO2eq")
+      end
     end
 
     
