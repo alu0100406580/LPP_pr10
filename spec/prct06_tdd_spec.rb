@@ -354,82 +354,133 @@ RSpec.describe Prct06Tdd do
       end
     end
 
-    describe "Práctica 8" do
+    describe Plato do
       before :each do
         @españolaM = Lista.new( [ @chocolate, @lentejas, @nuez, @queso, @cerveza, @tofu, @huevos, @cerveza ] )
         @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
         @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
-
-        @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
-        @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
-        @chocolateALaTaza = Plato.new( "Chocolate a la taza", [ @chocolate, @nuez, @leche_vaca ] , [ 300, 100, 500 ] )
-        @PotajeDeLentejas = PlatoAmbiental.new( "Potaje de Lentejas", [ @lentejas, @queso, @pollo ], [240, 30, 65 ] )
-        @MenuEspañol = PlatoAmbiental.new( "Almuerzo Continental", [ @cerdo, @huevos, @cafe, @chocolate], [ 190, 160, 35, 80] )
-        @polloALaCerveza = Plato.new( "Pollo a la Cerveza", [ @pollo, @cerveza, @tofu ], [ 220, 240, 35 ] )
-        @LentejasEstofadas = Plato.new( "Lentejas Estofadas", [ @lentejas, @cerdo ], [ 210, 100 ] )
-        @Tiramisu = PlatoAmbiental.new( "Tiramisu", [ @chocolate, @cafe, @leche_vaca, @huevos ], [ 500, 250, 125, 100 ] )
-        @BizcochoDeNueces = Plato.new( "Bizcocho de Nueces", [ @nuez, @leche_vaca, @huevos ], [ 50, 600, 400 ] )
-        @MousseDeCafe = PlatoAmbiental.new( "Mousse de Café", [ @leche_vaca, @huevos, @cafe ], [ 400, 360, 210 ] )
-        @HamburguesaLentejas = PlatoAmbiental.new( "Hamburguesa de lentejas", [ @huevos, @lentejas ], [ 200, 300 ] )
-        @cerdoSalsaDeQueso = Plato.new( "Cerdo en salsa de queso", [ @cerdo, @leche_vaca, @queso ], [ 400, 160, 70 ] )
-        @ensaladaDeSalmon = Plato.new( "Ensalada de salmón", [ @salmon , @tofu , @huevos, @queso ], [ 235, 164, 88, 71 ] )
-        @CorderoAlHorno = PlatoAmbiental.new( "Cordero Al horno", [ @carne_cordero, @cerveza], [ 500, 216 ] )
-
-        @PlatosDietaEspañola = Lista.new( [ @PotajeDeLentejas, @MenuEspañol, @polloALaCerveza, @chocolateALaTaza ] )
-        @PlatosDietaVasca = Lista.new( [ @LentejasEstofadas, @Tiramisu, @ensaladaDeSalmon, @CorderoAlHorno ] )
-        @PlatosDietaVegetaria = Lista.new( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
-        @PlatosDietaVegetaliana = Lista.new( [ @Tiramisu, @HamburguesaLentejas, @chocolateALaTaza, @MousseDeCafe ] )
-        @PlatosDietaLocuraCarne = Lista.new( [ @CorderoAlHorno, @cerdoSalsaDeQueso, @ensaladaDeSalmon, @chocolateALaTaza ] )
-
       end
 
-      it "Comparar dos alimentos" do
-        expect( @carne_vaca < @cafe ).to eq( false )
-        expect( @carne_vaca > @cafe ).to eq( true )
-        expect( @carne_vaca >= @cafe ).to eq( true )
-        expect( @carne_vaca <= @cafe ).to eq( false )
-        expect( @carne_vaca == @cafe ).to eq( false )
+      context "Comparar dos alimentos" do
+        it "<" do
+          expect( @carne_vaca < @cafe ).to eq( false )
+        end
+        it ">" do
+          expect( @carne_vaca > @cafe ).to eq( true )
+        end
+        it ">=" do
+          expect( @carne_vaca >= @cafe ).to eq( true )
+        end
+        it "<=" do
+          expect( @carne_vaca <= @cafe ).to eq( false )
+        end
+        it "==" do
+          expect( @carne_vaca == @cafe ).to eq( false )
+        end
       end
 
-      it "Listas enumerables" do
+      context "Clase Lista añadido el módulo Enumerable" do
+        it "método collect" do
         expect( @españolaM.collect { | alimento | alimento.nombre + "_alimento" } ).to eq( [ "chocolate_alimento",  "lentejas_alimento",  "nuez_alimento",  "queso_alimento",  "cerveza_alimento",  "tofu_alimento",  "huevos_alimento",  "cerveza_alimento" ] )
+        end
+        it "método select" do
         expect( @españolaM.select{ | alimento | alimento.carbohidratos > 10 } ).to eq([ @chocolate, @lentejas, @nuez] )
+        end
+        it "método max" do
         expect( @españolaM.max ).to eq( @nuez )
+        end
+        it "método min" do
         expect( @españolaM.min).to eq( @cerveza )
+        end
+        it "método sort" do
         expect( @españolaM.sort ).to eq( [ @cerveza, @cerveza, @tofu, @huevos, @lentejas, @queso, @chocolate, @nuez ] )
+        end
       end
 
-      it "Clase Plato Energético" do
-        expect( @plato1 ).not_to eq( nil )
-        expect( @plato1.nombre ).to eq( "Ternera con salsa de queso" )
-        expect( @plato1.listaAlimentos.to_s ).to eq( Lista.new( [ @carne_vaca, @nuez, @queso ] ).to_s )
-        expect( @plato1.listaGramos.to_s ).to eq(  Lista.new( [ 100, 50, 32  ] ).to_s )
-        expect( @plato1.vct ).to eq( 566 )
-        expect( @plato1.porcenProteinas ).to eq( 21 )
-        expect( @plato1.porcenLipidos ).to eq( 22 )
-        expect( @plato1.porcenHidratos ).to eq( 6 )
-        expect( @plato1.to_s ).to eq( "Ternera con salsa de queso: proteinas = #{21}%, lipidos = #{22}%, hidratos = #{6}%, vct = #{566}Kcal" )     
+      context "Creamos La clase Plato" do
+        it "Plato no nulo" do
+          expect( @plato1 ).not_to eq( nil )
+        end
+        it "Plato atributo nombre" do
+          expect( @plato1.nombre ).to eq( "Ternera con salsa de queso" )
+        end
+        it "Plato atributo listaAlimentos" do
+          expect( @plato1.listaAlimentos.to_s ).to eq( Lista.new( [ @carne_vaca, @nuez, @queso ] ).to_s )
+        end
+        it "Plato atributo listaGramos" do
+          expect( @plato1.listaGramos.to_s ).to eq(  Lista.new( [ 100, 50, 32  ] ).to_s )
+        end
+        it "Plato atributo vct(Valor Calorico Total)" do
+          expect( @plato1.vct ).to eq( 566 )
+        end
+        it "Plato atributo porcentaje de proteinas" do
+          expect( @plato1.porcenProteinas ).to eq( 21 )
+        end
+        it "Plato atributo porcentaje de lípidos" do
+          expect( @plato1.porcenLipidos ).to eq( 22 )
+        end
+        it "Plato atributo porcentaje de hidratos" do
+          expect( @plato1.porcenHidratos ).to eq( 6 )
+        end
+        it "Plato salida formateada (to_s)" do
+          expect( @plato1.to_s ).to eq( "Ternera con salsa de queso: proteinas = #{21}%, lipidos = #{22}%, hidratos = #{6}%, vct = #{566}Kcal" )     
+        end
       end
 
-      it "Clase Plato Ambiental y pruebas de tipo" do
-
-        expect( @plato2 ).not_to eq( nil )
-        expect( @plato2.emisionesDiarias ).to eq( 35 )
-        expect( @plato2.metrosUsoTerreno ).to eq( 86 )
-        expect( @plato2.eficienciaEnergetica ).to eq( "EficienciaEnergética -> Lasaña de de pollo: #{35}kgCO2eq, #{86}Terreno m^2/año" )
-        expect( @plato1.is_a?( PlatoAmbiental ) ).not_to eq( true )
-        expect( @plato2.instance_of?( PlatoAmbiental ) ).to eq( true )
-        expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Comparable, Object, Kernel, BasicObject ] )
-        expect( @plato2 ).to be_a_kind_of( PlatoAmbiental )
+      context "Clase Plato Ambiental y pruebas de jerarquía" do
+        it "Clase Plato Ambiental funcionando" do
+          expect( @plato2 ).not_to eq( nil )
+          expect( @plato2.emisionesDiarias ).to eq( 35 )
+          expect( @plato2.metrosUsoTerreno ).to eq( 86 )
+          expect( @plato2.eficienciaEnergetica ).to eq( "EficienciaEnergética -> Lasaña de de pollo: #{35}kgCO2eq, #{86}Terreno m^2/año" )
+        end
+          it "Pruebas de jerarquía" do
+          expect( @plato1.is_a?( PlatoAmbiental ) ).not_to eq( true )
+          expect( @plato2.instance_of?( PlatoAmbiental ) ).to eq( true )
+          expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Comparable, Object, Kernel, BasicObject ] )
+          expect( @plato2 ).to be_a_kind_of( PlatoAmbiental )
+        end
       end
 
-      it "Dietas de distintos tipos para probar los tipos" do
-        expect( @plato1 < @plato2 ).to eq( true )
-        expect( @PlatosDietaEspañola.collect { | plato | "Plato " + plato.nombre  } ).to eq( [ "Plato Potaje de Lentejas", "Plato Almuerzo Continental", "Plato Pollo a la Cerveza", "Plato Chocolate a la taza" ] )
-        expect( @PlatosDietaVegetaria.select { | plato | plato.vct  > 100 } ).to eq( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
-        expect( @PlatosDietaVegetaria.max ).to eq( @Tiramisu )
-        expect( @PlatosDietaVasca.min ).to eq( @LentejasEstofadas )
-        expect( @PlatosDietaVegetaria.sort ).to eq( [ @MousseDeCafe, @BizcochoDeNueces, @BizcochoDeNueces, @Tiramisu ] )
+      context "Platos de diferentes tipos comparables y diferentes métodos de dietas realizables" do
+        before :each do
+          @chocolateALaTaza = Plato.new( "Chocolate a la taza", [ @chocolate, @nuez, @leche_vaca ] , [ 300, 100, 500 ] )
+          @PotajeDeLentejas = PlatoAmbiental.new( "Potaje de Lentejas", [ @lentejas, @queso, @pollo ], [240, 30, 65 ] )
+          @MenuEspañol = PlatoAmbiental.new( "Almuerzo Continental", [ @cerdo, @huevos, @cafe, @chocolate], [ 190, 160, 35, 80] )
+          @polloALaCerveza = Plato.new( "Pollo a la Cerveza", [ @pollo, @cerveza, @tofu ], [ 220, 240, 35 ] )
+          @LentejasEstofadas = Plato.new( "Lentejas Estofadas", [ @lentejas, @cerdo ], [ 210, 100 ] )
+          @Tiramisu = PlatoAmbiental.new( "Tiramisu", [ @chocolate, @cafe, @leche_vaca, @huevos ], [ 500, 250, 125, 100 ] )
+          @BizcochoDeNueces = Plato.new( "Bizcocho de Nueces", [ @nuez, @leche_vaca, @huevos ], [ 50, 600, 400 ] )
+          @MousseDeCafe = PlatoAmbiental.new( "Mousse de Café", [ @leche_vaca, @huevos, @cafe ], [ 400, 360, 210 ] )
+          @HamburguesaLentejas = PlatoAmbiental.new( "Hamburguesa de lentejas", [ @huevos, @lentejas ], [ 200, 300 ] )
+          @cerdoSalsaDeQueso = Plato.new( "Cerdo en salsa de queso", [ @cerdo, @leche_vaca, @queso ], [ 400, 160, 70 ] )
+          @ensaladaDeSalmon = Plato.new( "Ensalada de salmón", [ @salmon , @tofu , @huevos, @queso ], [ 235, 164, 88, 71 ] )
+          @CorderoAlHorno = PlatoAmbiental.new( "Cordero Al horno", [ @carne_cordero, @cerveza], [ 500, 216 ] )
+
+          @PlatosDietaEspañola = Lista.new( [ @PotajeDeLentejas, @MenuEspañol, @polloALaCerveza, @chocolateALaTaza ] )
+          @PlatosDietaVasca = Lista.new( [ @LentejasEstofadas, @Tiramisu, @ensaladaDeSalmon, @CorderoAlHorno ] )
+          @PlatosDietaVegetaria = Lista.new( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
+          @PlatosDietaVegetaliana = Lista.new( [ @Tiramisu, @HamburguesaLentejas, @chocolateALaTaza, @MousseDeCafe ] )
+          @PlatosDietaLocuraCarne = Lista.new( [ @CorderoAlHorno, @cerdoSalsaDeQueso, @ensaladaDeSalmon, @chocolateALaTaza ] )
+        end
+        it "Platos de diferentes tipos comparables" do
+          expect( @plato1 < @plato2 ).to eq( true )
+        end
+        it "Dieta con collect funcionando" do
+          expect( @PlatosDietaEspañola.collect { | plato | "Plato " + plato.nombre  } ).to eq( [ "Plato Potaje de Lentejas", "Plato Almuerzo Continental", "Plato Pollo a la Cerveza", "Plato Chocolate a la taza" ] )
+        end
+        it "Dieta con select funcionando" do
+          expect( @PlatosDietaVegetaria.select { | plato | plato.vct  > 100 } ).to eq( [ @Tiramisu, @BizcochoDeNueces, @MousseDeCafe, @BizcochoDeNueces ] )
+        end
+        it "Dieta con max funcionando" do
+          expect( @PlatosDietaVegetaria.max ).to eq( @Tiramisu )
+        end
+        it "Dieta con min funcionando" do
+          expect( @PlatosDietaVasca.min ).to eq( @LentejasEstofadas )
+        end
+        it "Dieta con sort funcionando" do
+          expect( @PlatosDietaVegetaria.sort ).to eq( [ @MousseDeCafe, @BizcochoDeNueces, @BizcochoDeNueces, @Tiramisu ] )
+        end
       end
     end
   end
