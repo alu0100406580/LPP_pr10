@@ -483,5 +483,29 @@ RSpec.describe Prct06Tdd do
         end
       end
     end
+    describe "Práctica 9" do
+      before :each do
+        @plato1 = Plato.new( "Ternera con salsa de queso", [ @carne_vaca, @nuez, @queso ], [ 100, 50, 32 ] )
+        @plato2 = PlatoAmbiental.new( "Lasaña de de pollo", [ @pollo, @queso, @huevos, @leche_vaca], [ 200, 100, 75, 300 ] )
+        @Tiramisu = PlatoAmbiental.new( "Tiramisu", [ @chocolate, @cafe, @leche_vaca, @huevos ], [ 500, 250, 125, 100 ] )
+        @MenuDietetico = Lista.new( [ @plato1, @plato2, @Tiramisu ] )
+        @listaPrecios = Lista.new( [8, 10, 5] )
+      end
+
+      context "Creación del menú dietético y prueba ambiental" do
+        it "Plato no nulo" do
+          expect( @plato1 ).not_to eq( nil )
+        end
+        it "MenuDietetico no nulo" do
+          expect( @plato1 ).not_to eq( nil )
+        end
+        it "Lista de Precios no nulo" do
+          expect( @listaPrecios ).not_to eq( nil ) 
+        end
+        it "Huella Nutricional de Menu" do
+          expect( @plato1.huellaNutricional ).not_to eq( nil )
+        end
+      end
+    end
   end
 end
