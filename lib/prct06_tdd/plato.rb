@@ -81,6 +81,17 @@ class Plato
     "#{@nombre}: proteinas = #{@porcenProteinas}%, lipidos = #{@porcenLipidos}%, hidratos = #{@porcenHidratos}%, vct = #{@vct}Kcal"
   end
 
+  def huellaNutricional()
+    
+    if ( @vct <= 670 )
+      return 1
+    elsif ( @vct >= 670 && @vct <= 830 )
+      return 2
+    else
+      return 3
+    end
+  end
+
   def <=>(other)
     return nil unless other.kind_of? Plato
       self.vct <=> other.vct
@@ -91,7 +102,7 @@ class PlatoAmbiental < Plato
 
   attr_accessor :emisionesDiarias, :metrosUsoTerreno, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
 
-  def initialize( nombre, listaAlimentos, listaGramos )
+  def initialize( nombre, listaAlimentos, listaGramos )    
     super( @nombre = nombre, @listaAlimentos = listaAlimentos, @listaGramos = listaGramos )
     
     @vct = vctCalculo
@@ -128,6 +139,31 @@ class PlatoAmbiental < Plato
 
   def eficienciaEnergetica()
     "EficienciaEnergética -> #{@nombre}: #{@emisionesDiarias}kgCO2eq, #{@metrosUsoTerreno}Terreno m^2/año"
+  end
+
+  def huellaNutricional()
+    
+    if ( @vct <= 670 )
+      indicadorEnergia = 1
+    elsif ( @vct >= 670 && @vct <= 830 )
+      indicadorEnergia = 2
+    else
+      indicadorEnergia = 3
+    end
+
+    if ( self.instance_of? PlatoAmbiental )
+      if ( @emisionesDiarias <= 670 )
+        indicadorCarbono = 1
+      elsif ( @emisionesDiarias >= 670 && @emisionesDiarias <= 830 )
+        indicadorCarbono = 2
+      else
+        indicadorCarbono = 3
+      end
+      return ( indicadorEnergia + indicadorCarbono ) / 2
+
+    else
+      return indicadorEnergia
+    end
   end
 
   def <=>(other)

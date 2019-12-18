@@ -502,8 +502,11 @@ RSpec.describe Prct06Tdd do
         it "Lista de Precios no nulo" do
           expect( @listaPrecios ).not_to eq( nil ) 
         end
-        it "Huella Nutricional de Menu" do
-          expect( @plato1.huellaNutricional ).not_to eq( nil )
+        it "Huella Nutricional de plato1" do
+          expect( @plato1.huellaNutricional ).to eq( 1 )
+        end
+        it "Huella Nutricional de plato2" do
+          expect( @plato2.huellaNutricional ).to eq( 2 )
         end
       end
     end
