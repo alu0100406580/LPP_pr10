@@ -533,10 +533,11 @@ RSpec.describe Prct06Tdd do
           expect( @MenuDietetico.max ).to eq( @plato2 )
         end
         it "Incrementar el precio de los platos del menú dietético en proporción." do
-          
-          expect( @listaPreciosIncrementados ).to eq( [] )
+          indice_max_nutricional = @MenuDietetico.max.huellaNutricional
+          incrementos = [ 1.25, 1.5, 2 ]
+          @listaPreciosIncrementados = @listaPrecios.map{ | precio | precio * incrementos[ indice_max_nutricional - 1 ] }
+          expect( @listaPreciosIncrementados ).to eq( [ 12, 15, 7.5 ] )
         end
-
       end
     end
   end
