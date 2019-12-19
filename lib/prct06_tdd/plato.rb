@@ -1,9 +1,25 @@
+##
+# Clase Plato
+# Métodos:
+# initialize
+# vctCalculo
+# proteinasCalculo
+# lipidosCalculo
+# hidratosCalculo
+# huellaNutricional
+# to_s
+# 
+
 class Plato
-
+  ##
+  # Modulo Comparable
   include Comparable
-
+  ##
+  # los getters y setters :nombre, :listaAlimentos, :listaGramos, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
   attr_accessor :nombre, :listaAlimentos, :listaGramos, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
 
+  ##
+  # El initialize de Plato donde se inicializan todas las variables de instancia
   def initialize( nombre, listaAlimentos, listaGramos )
 
     @nombre = nombre
@@ -23,6 +39,8 @@ class Plato
     @porcenHidratos = hidratosCalculo
   end
 
+  ##
+  # Metodo con el se calcula el vct
   def vctCalculo()
 
     vct = 0
@@ -35,6 +53,8 @@ class Plato
     vct.round()
   end
 
+  ##
+  #Metodo con el que se calculan las proteinas
   def proteinasCalculo()
 
     proteinas = 0
@@ -49,6 +69,8 @@ class Plato
     (proteinas * 100 / sumaTotalGramos).round()
   end
 
+  ##
+  #Metodo con el que se calculan los lípidos
   def lipidosCalculo()
     
     lipidos = 0
@@ -63,6 +85,9 @@ class Plato
     (lipidos * 100 / sumaTotalGramos).round()
   end
 
+
+  ##
+  #Metodo con el que se calculan los hidratos
   def hidratosCalculo()
     
     hidratos = 0
@@ -77,10 +102,14 @@ class Plato
     (hidratos * 100 / sumaTotalGramos).round()
   end
 
+  ##
+  #Metodo con el que se formatea la salida 
   def to_s()
     "#{@nombre}: proteinas = #{@porcenProteinas}%, lipidos = #{@porcenLipidos}%, hidratos = #{@porcenHidratos}%, vct = #{@vct}Kcal"
   end
 
+  ##
+  #Metodo con el que se calcula la huella nutricional y da su índice de salida
   def huellaNutricional()
     
     if ( @vct <= 670 )
@@ -92,20 +121,37 @@ class Plato
     end
   end
 
+
+  ##
+  #Metodo para que los platos sean comparables
   def <=>(other)
     return nil unless other.kind_of? Plato
       self.vct <=> other.vct
   end
 end
 
+##
+# Clase PlatoAmbiental
+# Clase que define un plato ambiental 
+# métodos: 
+# initialize
+# emisionesCalculo
+# metrosCalculo
+# eficienciaEnergetica
+# huellaNutricional
+#
+
 class PlatoAmbiental < Plato
 
+  ##
+  # los getters y setters :emisionesDiarias, :metrosUsoTerreno, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
   attr_accessor :emisionesDiarias, :metrosUsoTerreno, :vct, :porcenProteinas, :porcenLipidos, :porcenHidratos
 
+  ##
+  # El initialize de PlatoAmbiental
   def initialize( nombre, listaAlimentos, listaGramos )    
     super( @nombre = nombre, @listaAlimentos = listaAlimentos, @listaGramos = listaGramos )
-    
-    @vct = vctCalculo
+    @vct = vctCalculo 
     @porcenProteinas = proteinasCalculo
     @porcenLipidos = lipidosCalculo
     @porcenHidratos = hidratosCalculo
@@ -113,6 +159,9 @@ class PlatoAmbiental < Plato
     @metrosUsoTerreno = metrosCalculo
   end
 
+
+  ##
+  #Metodo con el que se calculan las emisiones de plato Ambiental
   def emisionesCalculo()
     
     emisiones = 0
@@ -125,6 +174,9 @@ class PlatoAmbiental < Plato
     emisiones.round()
   end
 
+
+  ##
+  #Metodo con el que se calcula los metros cuadrados
   def metrosCalculo()
     
     metros = 0
@@ -137,10 +189,16 @@ class PlatoAmbiental < Plato
     metros.round()
   end
 
+
+  ##
+  #Metodo con el que se calcula la eficiencia energética
   def eficienciaEnergetica()
     "EficienciaEnergética -> #{@nombre}: #{@emisionesDiarias}kgCO2eq, #{@metrosUsoTerreno}Terreno m^2/año"
   end
 
+
+  ##
+  #Metodo con el que se calcula la huella Nutricional para plato Ambiental
   def huellaNutricional()
     
     if ( @vct <= 670 )
@@ -166,6 +224,8 @@ class PlatoAmbiental < Plato
     end
   end
 
+  ##
+  #Metodo para que los Platos Ambientales sean comparables
   def <=>(other)
     return nil unless other.kind_of? Plato
     if ( other.instance_of? PlatoAmbiental )
