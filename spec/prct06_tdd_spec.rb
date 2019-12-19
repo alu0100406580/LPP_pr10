@@ -512,10 +512,24 @@ RSpec.describe Prct06Tdd do
 
       context "Menu dietético" do
         it "Huella nutricional menú dietético" do
+          @SumaHuella =  @MenuDietetico.collect { | plato | plato.huellaNutricional }.reduce(:+)
+          @huellaMenuDietetico = ( @SumaHuella / @MenuDietetico.tamaño.to_f ).ceil
+
           expect( @huellaMenuDietetico ).to eq( 2 )
         end
         it "Plato con máxima huella nutricional dentro del menú nutricional" do
-          expect( @MenuDietetico.max ).to eq( 2 )
+          class Plato
+            def <=>( other )
+              self.huellaNutricional <=> other.huellaNutricional
+            end
+          end
+          class PlatoAmbiental
+            def <=>( other )
+              self.huellaNutricional <=> other.huellaNutricional
+            end
+          end
+
+          expect( @MenuDietetico.max ).to eq( @plato2 )
         end
       end
     end
