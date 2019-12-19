@@ -492,12 +492,12 @@ RSpec.describe Prct06Tdd do
         @listaPrecios = Lista.new( [8, 10, 5] )
       end
 
-      context "Creación del menú dietético y prueba ambiental" do
+      context "Creación de la huella nutricional" do
         it "Plato no nulo" do
           expect( @plato1 ).not_to eq( nil )
         end
         it "MenuDietetico no nulo" do
-          expect( @plato1 ).not_to eq( nil )
+          expect( @plato2 ).not_to eq( nil )
         end
         it "Lista de Precios no nulo" do
           expect( @listaPrecios ).not_to eq( nil ) 
@@ -507,6 +507,15 @@ RSpec.describe Prct06Tdd do
         end
         it "Huella Nutricional de plato2" do
           expect( @plato2.huellaNutricional ).to eq( 2 )
+        end
+      end
+
+      context "Menu dietético" do
+        it "Huella nutricional menú dietético" do
+          expect( @huellaMenuDietetico ).to eq( 2 )
+        end
+        it "Plato con máxima huella nutricional dentro del menú nutricional" do
+          expect( @MenuDietetico.max ).to eq( 2 )
         end
       end
     end
