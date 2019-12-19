@@ -152,9 +152,9 @@ class PlatoAmbiental < Plato
     end
 
     if ( self.instance_of? PlatoAmbiental )
-      if ( @emisionesDiarias <= 670 )
+      if ( @emisionesDiarias <= 800 )
         indicadorCarbono = 1
-      elsif ( @emisionesDiarias >= 670 && @emisionesDiarias <= 830 )
+      elsif ( @emisionesDiarias >= 800 && @emisionesDiarias <= 1200 )
         indicadorCarbono = 2
       else
         indicadorCarbono = 3
