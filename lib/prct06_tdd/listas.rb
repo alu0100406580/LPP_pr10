@@ -1,13 +1,31 @@
+##
 # create a Struct with :value, :next and :prev
 Node = Struct.new(:value, :next, :prev)
 
+##
+# Clase Lista
+# Métodos:
+# initialize
+# is_empty?
+# insertaAdelante
+# insertaAtras
+# insertaArray
+# extraerDelante
+# pos: da el valor en la posiicón
+# to_s
+# 
 
 class Lista
 
+  ##
+  # Módulo Enumerable
   include Enumerable
-    
+  
+  ##
+  # los getters y setters :cabeza, :cola, :tamaño
   attr_accessor :cabeza, :cola, :tamaño
 
+  ##
   # def initialize()
   #   @cabeza = nil
   #   @cola = nil
@@ -23,10 +41,14 @@ class Lista
     end
   end
 
+  ##
+  # El método para saber si la lista está vacía
   def is_empty?
     return self.tamaño.zero?
   end
 
+  ##
+  # Método para insertar delante
   def insertaAdelante(valor) 
 
     nodo = Node.new(valor,nil,nil)    
@@ -40,7 +62,9 @@ class Lista
     end
       @tamaño = @tamaño + 1
   end
-  
+
+  ##
+  # Método para insertar atrás
   def insertaAtras(valor)
 
     nodo = Node.new(valor,nil,nil)
@@ -55,6 +79,8 @@ class Lista
     @tamaño = @tamaño + 1
   end
 
+  ##
+  # Método para insertar un array
   def insertaArray( arr )
     if arr.kind_of?( Array )
       while ( arr.length != 0)
@@ -63,6 +89,8 @@ class Lista
     end
   end
 
+  ##
+  # Método para extraer delante el elemento
   def extraerDelante
     if(self.tamaño == 0)
        return "Lista Vacía"
@@ -74,6 +102,8 @@ class Lista
     end
   end
 
+  ##
+  # Método para extraer detrás del elemento
   def extraerDetras
     if(self.tamaño == 0)
       return "Lista Vacía"
@@ -85,6 +115,8 @@ class Lista
     end
   end
 
+  ##
+  # Método mostrar la lista formateada
   def to_s
     nodoAux = @cabeza
     arr = []
@@ -99,6 +131,8 @@ class Lista
     end
   end
 
+  ##
+  # Método para mostrar el elemento en la posición deseada
   def pos( pos )
     i = 1
     self.each do | x |
@@ -112,6 +146,8 @@ class Lista
     return nodoAux["value"]
   end
 
+  ##
+  # Método para que la lista pueda ser enumarada correctamente
   def each
     nodoAux = Node.new(nil,nil,nil)
     nodoAux = @cabeza
@@ -120,5 +156,4 @@ class Lista
         nodoAux = nodoAux["next"]
     end
   end
-
 end
