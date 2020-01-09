@@ -539,6 +539,16 @@ RSpec.describe Prct06Tdd do
           expect( @listaPreciosIncrementados ).to eq( [ 12, 15, 7.5 ] )
         end
       end
+      describe PlatoDSL do
+        before :each do
+          @p1 = PlatoDSL.new("Hamburguesa", 200, 150) do
+            ingrediente "Carne", :gramos => "100"
+            ingrediente "Lechuga", :gramos => "20"
+            ingrediente "Tomate", :gramos => "150"
+            ingrediente "Salsa", :gramos => "50"
+          end
+        end
+      end
     end
   end
 end
