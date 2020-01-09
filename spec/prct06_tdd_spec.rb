@@ -539,16 +539,21 @@ RSpec.describe Prct06Tdd do
           expect( @listaPreciosIncrementados ).to eq( [ 12, 15, 7.5 ] )
         end
       end
-      describe PlatoDSL do
-        before :each do
-          @p1 = PlatoDSL.new("Hamburguesa", 200, 150) do
-            ingrediente "Carne", :gramos => "100"
-            ingrediente "Lechuga", :gramos => "20"
-            ingrediente "Tomate", :gramos => "150"
-            ingrediente "Salsa", :gramos => "50"
-          end
+    end
+
+    describe PlatoDSL do
+      before :each do
+        @platoDSL = PlatoDSL.new( "Perrito Caliente" ) do
+          ingrediente "Salchicha", :gramos => "100", :valorNutricional => "321", :valorAmbiental => "410" 
+          ingrediente "Pan", :gramos => "20", :valorNutricional => "280", :valorAmbiental => "374" 
+          ingrediente "Salsa", :gramos => "50", :valorNutricional => "198", :valorAmbiental => "204" 
         end
       end
+        context "PlatoDSL" do
+          it "Mostrar Plato" do
+            expect(@platoDSL.to_s).to eq("Perrito Caliente \n Valor Nutricional  (198), Valor Ambiental  (204) Ingredientes: Salchicha (100), Pan (20), Salsa (50)\n")
+          end
+        end
     end
   end
 end

@@ -2,6 +2,7 @@ require "prct06_tdd/version"
 require "prct06_tdd/alimento"
 require "prct06_tdd/listas"
 require "prct06_tdd/plato"
+require "prct06_tdd/platodsl"
 
 ##
 # Módulo por defecto de la gema
