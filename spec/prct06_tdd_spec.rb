@@ -551,7 +551,14 @@ RSpec.describe Prct06Tdd do
       end
         context "PlatoDSL" do
           it "Mostrar Plato" do
-            expect(@platoDSL.to_s).to eq("Perrito Caliente \n Valor Nutricional  (198), Valor Ambiental  (204) Ingredientes: Salchicha (100), Pan (20), Salsa (50)\n")
+            expect(@platoDSL.to_s).to eq( "Perrito Caliente \n Valor Nutricional  (198), Valor Ambiental  (204) Ingredientes: Salchicha (100), Pan (20), Salsa (50)\n" )
+          end
+        end
+        context 'MenuDSL' do
+          it "Se crea un menú DSL" do
+            puts @menuDSL
+            puts @platoDSL
+            expect(@menuDSL.to_s).to eq( 4 )
           end
         end
     end
