@@ -546,7 +546,10 @@ RSpec.describe Prct06Tdd do
         @platoDSL = PlatoDSL.new( "Perrito Caliente" ) do
           ingrediente "Salchicha", :gramos => "100", :valorNutricional => "321", :valorAmbiental => "410" 
           ingrediente "Pan", :gramos => "20", :valorNutricional => "280", :valorAmbiental => "374" 
-          ingrediente "Salsa", :gramos => "50", :valorNutricional => "198", :valorAmbiental => "204" 
+          ingrediente "Salsa", :gramos => "50", :valorNutricional => "198", :valorAmbiental => "204"
+        end
+        @menuDSL = MenuDSL.new( "Comida Rápida" ) do
+          plato "Perrito Caliente", :precio => "45"
         end
       end
         context "PlatoDSL" do
@@ -556,9 +559,7 @@ RSpec.describe Prct06Tdd do
         end
         context 'MenuDSL' do
           it "Se crea un menú DSL" do
-            puts @menuDSL
-            puts @platoDSL
-            expect(@menuDSL.to_s).to eq( 4 )
+            expect(@menuDSL.to_s).to eq( "Perrito Caliente  (45)€" )
           end
         end
     end
