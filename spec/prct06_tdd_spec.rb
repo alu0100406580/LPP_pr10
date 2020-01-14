@@ -437,7 +437,7 @@ RSpec.describe Prct06Tdd do
           it "Pruebas de jerarquía" do
           expect( @plato1.is_a?( PlatoAmbiental ) ).not_to eq( true )
           expect( @plato2.instance_of?( PlatoAmbiental ) ).to eq( true )
-          expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Comparable, Object, Kernel, BasicObject ] )
+          expect( @plato2.class.ancestors ).to eq( [ PlatoAmbiental, Plato, Comparable, Object, Tins::Full, Tins::Blank::Object, JSON::Ext::Generator::GeneratorMethods::Object, Kernel, BasicObject ] )
           expect( @plato2 ).to be_a_kind_of( PlatoAmbiental )
         end
       end
